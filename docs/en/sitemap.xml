@@ -51,27 +51,8 @@
                 href="https://clog95.com/page/"
                 />
   </url><url>
-    <loc>https://clog95.com/posts/css-introduction/</loc>
-    <lastmod>2022-09-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://clog95.com/posts/html-introduction/</loc>
-    <lastmod>2022-09-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://clog95.com/posts/</loc>
-    <lastmod>2022-09-10T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://clog95.com/zh-cn/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://clog95.com/posts/"
-                />
-  </url><url>
     <loc>https://clog95.com/categories/</loc>
-    <lastmod>2022-08-30T23:16:56+07:00</lastmod>
+    <lastmod>2022-09-10T11:51:24+07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vn"
@@ -92,6 +73,31 @@
                 hreflang="en"
                 href="https://clog95.com/categories/"
                 />
+  </url><url>
+    <loc>https://clog95.com/categories/graphic/</loc>
+    <lastmod>2022-09-10T11:51:24+07:00</lastmod>
+  </url><url>
+    <loc>https://clog95.com/posts/png-trees-graphic-resources-variety-is-available-for-download/</loc>
+    <lastmod>2022-09-10T11:51:24+07:00</lastmod>
+  </url><url>
+    <loc>https://clog95.com/posts/</loc>
+    <lastmod>2022-09-10T11:51:24+07:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://clog95.com/zh-cn/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://clog95.com/posts/"
+                />
+  </url><url>
+    <loc>https://clog95.com/posts/css-introduction/</loc>
+    <lastmod>2022-09-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://clog95.com/posts/html-introduction/</loc>
+    <lastmod>2022-09-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://clog95.com/categories/web-development/</loc>
     <lastmod>2022-08-30T23:16:56+07:00</lastmod>

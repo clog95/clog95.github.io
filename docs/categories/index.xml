@@ -6,7 +6,15 @@
         <description>Recent content in Categories on Clog95 - Hi Guys!</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Tue, 30 Aug 2022 23:16:56 +0700</lastBuildDate><atom:link href="https://clog95.com/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 10 Sep 2022 11:51:24 +0700</lastBuildDate><atom:link href="https://clog95.com/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Graphic</title>
+        <link>https://clog95.com/categories/graphic/</link>
+        <pubDate>Sat, 10 Sep 2022 11:51:24 +0700</pubDate>
+        
+        <guid>https://clog95.com/categories/graphic/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Web Development</title>
         <link>https://clog95.com/categories/web-development/</link>
         <pubDate>Tue, 30 Aug 2022 23:16:56 +0700</pubDate>
