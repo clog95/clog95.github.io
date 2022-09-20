@@ -1,0 +1,183 @@
+baseurl: https://clog95.com/
+languageCode: en-us
+paginate: 5
+title: Clog95
+
+languages:
+    en:
+        languageName: English
+        title: Clog95 - Hi Guys!
+        weight: 1
+    vn:
+        languageName: Việt Nam
+        title: Clog95
+        weight: 2
+    ru:
+        languageName: россия
+        title: Clog95 - привет!
+        weight: 3
+    zh-cn:
+        languageName: 中文
+        title: Clog95 - 你好!
+        weight: 4
+
+module:
+    hugoVersion:
+        extended: true
+        min: "0.87.0"
+
+DefaultContentLanguage: en
+
+permalinks:
+    post: /p/:slug/
+    page: /:slug/
+
+params:
+    mainSections:
+        - posts
+    featuredImageField: image
+    rssFullContent: true
+    favicon:
+
+    footer:
+        since: 2022
+        customText: Sending my dream to the feature!
+
+    dateFormat:
+        published: Jan 02, 2006
+        lastUpdated: Jan 02, 2006 15:04 MST
+
+    sidebar:
+        compact: true
+        emoji: 🍥
+        subtitle: Small steps are the best way to tackle big goals.
+        avatar:
+            enabled: true
+            local: true
+            src: images/logo-150x150.png
+    article:
+        math: false
+        toc: true
+        readingTime: true
+        license:
+            enabled: false
+            default: Licensed under CC BY-NC-SA 4.0  
+
+    comments:
+        enabled: true
+        provider: gitalk
+
+        disqusjs:
+            shortname:
+            apiUrl:
+            apiKey:
+            admin:
+            adminLabel:
+
+        utterances:
+            repo:
+            issueTerm: pathname
+            label:
+
+        remark42:
+            host:
+            site:
+            locale:
+
+        vssue:
+            platform:
+            owner:
+            repo:
+            clientId:
+            clientSecret:
+            autoCreateIssue: false
+
+        # Waline client configuration see: https://waline.js.org/en/reference/client.html
+        waline:
+            serverURL:
+            lang:
+            visitor:
+            avatar:
+            emoji:
+                - https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo
+            requiredMeta:
+                - name
+                - email
+                - url
+            placeholder:
+            locale:
+                admin: Admin
+
+        twikoo:
+            envId:
+            region:
+            path:
+            lang:
+
+        giscus:
+            repo:
+            repoID:
+            category:
+            categoryID:
+            mapping:
+            strict:
+            lightTheme:
+            darkTheme:
+            reactionsEnabled: 1
+            emitMetadata: 0
+            inputPosition:
+            lang:
+
+        gitalk:
+            owner:
+            admin:
+            repo: https://github.com/clog95/clog95-comments
+            clientID: 296f80a520228186ba2f
+            clientSecret: e3a7ca73f49a53349d5b7367655e5705cb90d10c
+
+        cusdis:
+            host:
+            id:
+
+    widgets:
+        homepage:
+            - type: search
+            - type: archives
+              params:
+                  limit: 5
+            - type: categories
+              params:
+                  limit: 10
+            - type: tag-cloud
+              params:
+                  limit: 10
+        page:
+            - type: toc
+
+
+    opengraph:
+        twitter:
+            # Your Twitter username
+            site:
+
+            # Available values: summary, summary_large_image
+            card: summary_large_image
+
+    defaultImage:
+        opengraph:
+            enabled: false
+            local: false
+            src:
+
+    colorScheme:
+        # Display toggle
+        toggle: true
+
+        # Available values: auto, light, dark
+        default: auto
+
+    imageProcessing:
+        cover:
+            enabled: true
+        content:
+            enabled: true
