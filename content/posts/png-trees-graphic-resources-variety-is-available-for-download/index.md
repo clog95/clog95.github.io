@@ -1,9 +1,9 @@
 ---
-title: "Png Trees Graphic Resources Variety Is Available for Download"
+title: Png Trees Graphic Resources Variety Is Available for Download
 description:
-date: "2022-09-11"
-slug: "png-trees-graphic-resources-variety-is-available-for-download"
-image: "png-trees-graphic-resources-variety-is-available-for-download.jpg"
+date: 2022-09-11
+slug: png-trees-graphic-resources-variety-is-available-for-download
+image: png-trees-graphic-resources.jpg
 categories:
     - Graphic
 ---
