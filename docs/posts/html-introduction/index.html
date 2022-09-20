@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='In this article, I will be generalizing about HTML and HTML5, considering a simple HTML document and anatoming it. What are HTML tags and HTML elements and how to use them to embed an image, marking up text on your web page for the viewers to see when visiting your site. Finally you will be redirected when clicking on a link on a web page.
+What is HTML? HTML stands for Hyper Text Markup Language, it’s not a programming language, it’s a markup language for creating Web pages.'><title>HTML Introduction</title>
+
+<link rel='canonical' href='https://clog95.com/posts/html-introduction/'>
+
+<link rel="stylesheet" href="/scss/style.min.5a8e892f6fa14515e9065eee1f5d2e05302606ec7f11750b2fb95198f9cdcbfd.css"><meta property='og:title' content='HTML Introduction'>
+<meta property='og:description' content='In this article, I will be generalizing about HTML and HTML5, considering a simple HTML document and anatoming it. What are HTML tags and HTML elements and how to use them to embed an image, marking up text on your web page for the viewers to see when visiting your site. Finally you will be redirected when clicking on a link on a web page.
+What is HTML? HTML stands for Hyper Text Markup Language, it’s not a programming language, it’s a markup language for creating Web pages.'>
+<meta property='og:url' content='https://clog95.com/posts/html-introduction/'>
+<meta property='og:site_name' content='Clog95 - Hi Guys!'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:published_time' content='2022-09-10T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-09-10T00:00:00&#43;00:00'/><meta property='og:image' content='https://clog95.com/posts/html-introduction/html-introduction.jpg' />
+<meta name="twitter:title" content="HTML Introduction">
+<meta name="twitter:description" content="In this article, I will be generalizing about HTML and HTML5, considering a simple HTML document and anatoming it. What are HTML tags and HTML elements and how to use them to embed an image, marking up text on your web page for the viewers to see when visiting your site. Finally you will be redirected when clicking on a link on a web page.
+What is HTML? HTML stands for Hyper Text Markup Language, it’s not a programming language, it’s a markup language for creating Web pages."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://clog95.com/posts/html-introduction/html-introduction.jpg' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky compact">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/images/logo-150x150_hu13ca961c3153d695f5536b0ec20f4b1f_3776_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Clog95 - Hi Guys!</a></h1>
+            <h2 class="site-description">Small steps are the best way to tackle big goals.</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about-hugo/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-notebook" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-11a1 1 0 0 1 -1 -1v-14a1 1 0 0 1 1 -1m3 0v18" />
+  <line x1="13" y1="8" x2="15" y2="8" />
+  <line x1="13" y1="12" x2="15" y2="12" />
+</svg>
+
+
+
+                
+                <span>About Hugo</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://clog95.com/" selected>English</option>
+                        
+                            <option value="https://clog95.com/vn/" >Việt Nam</option>
+                        
+                            <option value="https://clog95.com/ru/" >россия</option>
+                        
+                            <option value="https://clog95.com/zh-cn/" >中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/posts/html-introduction/">
+                <img src="/posts/html-introduction/html-introduction_hue4439ff7af176d3692fc980e7bd70171_130824_800x0_resize_q75_box.jpg"
+                        srcset="/posts/html-introduction/html-introduction_hue4439ff7af176d3692fc980e7bd70171_130824_800x0_resize_q75_box.jpg 800w, /posts/html-introduction/html-introduction_hue4439ff7af176d3692fc980e7bd70171_130824_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post HTML Introduction" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/posts/html-introduction/">HTML Introduction</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 10, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    8 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>In this article, I will be generalizing about <strong>HTML</strong> and <strong>HTML5</strong>, considering a simple <strong>HTML document</strong> and anatoming it. What are <strong>HTML tags</strong> and <strong>HTML elements</strong> and how to use them to embed an image, marking up text on your web page for the viewers to see when visiting your site. Finally you will be redirected when clicking on a link on a web page.</p>
+<h2 id="what-is-html">What is HTML?</h2>
+<p>HTML stands for Hyper Text Markup Language, it’s not a programming language, it’s a markup language for creating Web pages.</p>
+<ul>
+<li>HTML describes the structure of a Web page</li>
+<li>HTML consists of a series of elements</li>
+<li>HTML elements tell the browser how to display the content</li>
+</ul>
+<p><strong>Note: HTML elements</strong> are represented by <strong>HTML tags</strong>. The elements are used to markup text, images, videos, games, playable audio tracks, or whatever else for display in a web browser.</p>
+<h2 id="what-is-html5">What is HTML5?</h2>
+<p>HTML5 is a new version of HTML language that is used for developing modern web. From this point forward, all the tutorials and examples follow the latest HTML5 standard.</p>
+<h2 id="a-simple-html-document">A Simple HTML Document</h2>
+<p>An HTML document (known as an HTML page) wraps up the basic HTML elements. Now we&rsquo;ll consider how individual HTML elements are combined to form an HTML document (called an HTML page).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">title</span>&gt;CLog95&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">h1</span>&gt;CLog95&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">h2</span>&gt;Learn web development&lt;/<span style="color:#f92672">h2</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">p</span>&gt;Something you need to learn: HTML, CSS, Javascript, PHP&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">p</span>&gt;Here I will show you some basic HTML elements and how to use CSS to style for my web page.&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><p><strong>Example Explained:</strong></p>
+<ul>
+<li><code>&lt;!DOCTYPE html&gt;</code> : doctype declaration, this is a required preamble. Here, defines this document as an HTML5 document.</li>
+<li><code>&lt;html&gt;</code> : this element is the root element of an HTML page that wraps all the content on the entire page.</li>
+<li><code>&lt;head&gt;</code> : this element contains meta information about the HTML page. Acts as a container for all the stuff you need to build the site that isn&rsquo;t the content you are showing to your page&rsquo;s viewers.</li>
+<li><code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code> : this element sets the character set your document should use to UTF-8. Essentially, with this set it can now handle any textual context you might put on it. So, no reason not to set this and it can help avoid some problems later on.</li>
+<li><code>&lt;title&gt;</code> : this element specifies a title for your HTML page, which is the title that is shown in the browser tab the page is loaded in.</li>
+<li><code>&lt;body&gt;</code> : this element defines the document&rsquo;s body. Acts as a container for all the contents that you want to show to web users when they visit your web page, such as text, images, videos, games, playable audio tracks, or whatever else.</li>
+<li><code>&lt;h1&gt;</code> : this element defines a larger heading.</li>
+<li><code>&lt;h2&gt;</code> :  like <code>&lt;h1&gt;</code> element, also defines a heading but smaller.</li>
+<li><code>&lt;p&gt;</code> : this element defines a paragraph.</li>
+</ul>
+<h2 id="html-tags">HTML Tags</h2>
+<p>HTML tags are element names surrounded by angle brackets</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">tagname</span>&gt;content goes here…&lt;/<span style="color:#f92672">tagname</span>&gt;
+</span></span></code></pre></div><p>Example of <code>&lt;h2&gt;</code> and <code>&lt;p&gt;</code> tags:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">h2</span>&gt;Learn web development&lt;/<span style="color:#f92672">h2</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">p</span>&gt;Something you need to learn: HTML, CSS, Javascript, PHP&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span></code></pre></div><ul>
+<li>HTML tags normally come in pair like <code>&lt;h2&gt;</code> and <code>&lt;/h2&gt;</code>, or <code>&lt;p&gt;</code> and <code>&lt;/p&gt;</code></li>
+<li>The first tag in a pair is <strong>the start tag</strong> (or <strong>opening tag</strong>), the second tag is <strong>the end tag</strong> (or <strong>closing tag</strong>)</li>
+<li>The end tag is written like the start tag, but with <strong>a forward slash</strong> ( <strong>/</strong> ) inserted before the tag name</li>
+</ul>
+<h2 id="what-is-an-html-element">What is an HTML Element?</h2>
+<p><strong>An HTML element</strong> is defined by <strong>a start tag</strong>, <strong>some content</strong>, and <strong>an end tag</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">tagname</span>&gt;content goes here…&lt;/<span style="color:#f92672">tagname</span>&gt;
+</span></span></code></pre></div><p>The HTML element is everything from the start tag to the end tag:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">h1</span>&gt;This is a heading.&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">p</span>&gt;This is a paragraph.&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">br</span>&gt;
+</span></span></code></pre></div><p>Now, anatomy the <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>, and <code>&lt;br&gt;</code> elements above in following table:</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Start tag</th>
+<th>Content</th>
+<th>End tag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;h1&gt;</code></td>
+<td>This is a heading.</td>
+<td><code>&lt;/h1&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;p&gt;</code></td>
+<td>This is a paragraph.</td>
+<td><code>&lt;/p&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;br&gt;</code></td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>Some HTML elements don&rsquo;t have content (like the <code>&lt;br&gt;</code> element). These elements are called empty elements. <strong>Empty elements</strong> do not have an end tag!</li>
+<li>Tags in HTML are case-insensitive. This means they can be written in uppercase or lowercase. For example, a <code>&lt;title&gt;</code> tag could be written as <code>&lt;title&gt;</code>, <code>&lt;TITLE&gt;</code>, <code>&lt;Title&gt;</code>, <code>&lt;TiTlE&gt;</code>, etc.. and it will work well. However, it is best practical to write all tags in lowercase for consistency, readability, and other reasons.</li>
+</ul>
+<h2 id="images">Images</h2>
+<p>To embed an image in the HTML page, you need to use the <code>&lt;img&gt;</code> element.</p>
+<p>Now, I will embed my image (<a class="link" href="https://drive.google.com/file/d/1IMvdKo-FqEMBc9KjYi1QDgQ5Wv1Tk-gH/view?usp=sharing"  target="_blank" rel="noopener"
+    >download here</a>) that has the name <strong>clog95-logo.png</strong>. The code as follow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;clog95-logo.png&#34;</span> <span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;CLog95&#34;</span>&gt;
+</span></span></code></pre></div><p>Because the <code>&lt;img&gt;</code> element is <strong>an empty element</strong> so there is no closing <code>&lt;/img&gt;</code> tag and no inner content. Its purpose is to embed an image in the HTML page in the place it appears.
+You can note <code>src</code> and <code>alt</code> that I have added to the <code>&lt;img&gt;</code> element, which are <strong>two attributes</strong> for the <code>&lt;img&gt;</code> element.</p>
+<ul>
+<li>The <code>src</code> attribute has value is <strong>unityx-logo.png</strong> placed between quotation marks( &quot;&quot; ). This value is the file path of the image, in this case it is the name of the image.</li>
+<li>The <code>alt</code> attribute has value is <strong>CLog95</strong> placed between quotation marks( &quot;&quot; ). This value is a text that will be shown to the viewers in case the image is lost due to some errors.</li>
+</ul>
+<p>Now, I will embed the image below the <code>&lt;h1&gt;</code> element of the HTML document:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">title</span>&gt;CLog95&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">h1</span>&gt;CLog95&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;clog95-logo.png&#34;</span> <span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;CLog95&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">h2</span>&gt;Learn web development&lt;/<span style="color:#f92672">h2</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">p</span>&gt;Something you need to learn: HTML, CSS, Javascript, PHP&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">p</span>&gt;Here I will show you some basic HTML elements and how to use CSS to style for my web page.&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><h2 id="marking-up-text">Marking up text</h2>
+<p>HTML has some essential elements for marking up text that include marking up <strong>headings</strong>, <strong>paragraphs</strong>, <strong>lists</strong>.</p>
+<h4 id="headings">Headings</h4>
+<p>As you know, a book has the main title, chapter titles, and subtitles, an HTML document can too.</p>
+<p>HTML has 6 heading levels from <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code>, in order from largest heading( <code>&lt;h1&gt;</code> ) to smallest heading( <code>&lt;h6&gt;</code> ). In the example of the HTML document above I have used <code>&lt;h1&gt;</code> and <code>&lt;h2&gt;</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">h1</span>&gt;UnityX&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">h2</span>&gt;Learn web development&lt;/<span style="color:#f92672">h2</span>&gt;
+</span></span></code></pre></div><h4 id="paragraphs">Paragraphs</h4>
+<p>The <code>&lt;p&gt;</code> elements are used for containing paragraphs of text, you&rsquo;ll use these frequently when marking up regular text content. In the example above I have used two <code>&lt;p&gt;</code> elements.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">p</span>&gt;Something you need to learn: HTML, CSS, Javascript, PHP&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">p</span>&gt;Here I will show you some basic HTML elements and how to use CSS to style for my web page.&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span></code></pre></div><h4 id="lists">Lists</h4>
+<p>A lot of the web&rsquo;s content is lists and HTML has special elements for these. The most common list types are <strong>ordered</strong> and <strong>unordered</strong> lists:</p>
+<ul>
+<li><strong>Unordered lists</strong> are lists where the order of the items doesn&rsquo;t matter. Use a <code>&lt;ul&gt;</code> element to wrap the unordered items inside.</li>
+<li><strong>Ordered lists</strong> are lists where the order of the items does matter. Use a <code>&lt;ol&gt;</code> element to wrap the ordered items inside.</li>
+</ul>
+<p>Each item inside the lists is put inside an <code>&lt;li&gt;</code> (list item) element.</p>
+<p>In the HTML document above, we have a marking up paragraph as below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">p</span>&gt;Something you need to learn: HTML, CSS, Javascript, PHP&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span></code></pre></div><p>Now, I want to turn the HTML, CSS, Javascript, PHP fragments into an unordered list. I could modify this markup to as bellow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">p</span>&gt;Something you need to learn:&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">li</span>&gt;HTML&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">li</span>&gt;CSS&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">li</span>&gt;Javascript&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">li</span>&gt;PHP&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span></code></pre></div><p>Now, our HTML document will look like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">title</span>&gt;CLog95&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">h1</span>&gt;CLog95&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;clog95-logo.png&#34;</span> <span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;CLog95&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">h2</span>&gt;Learn web development&lt;/<span style="color:#f92672">h2</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">p</span>&gt;Something you need to learn:&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>	  &lt;<span style="color:#f92672">li</span>&gt;HTML&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>	  &lt;<span style="color:#f92672">li</span>&gt;CSS&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>	  &lt;<span style="color:#f92672">li</span>&gt;Javascript&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>	  &lt;<span style="color:#f92672">li</span>&gt;PHP&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">p</span>&gt;Here I will show you some basic HTML elements and how to use CSS to style for my web page.&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><h4 id="links">Links</h4>
+<p>Links are very important - they help you to go anywhere in the internet world! By clicking on the links, you can be redirected to the posts, download files, play an audio track, watch a video, go into other sites or somewhere else.</p>
+<p>To add a link, we need to use a simple element - this is the <code>&lt;a&gt;</code> element.</p>
+<p>For example, I wanted that when I click on the CLog95 heading then I will be redirected to the home of my site at the address <a class="link" href="https://clog95.com/"  target="_blank" rel="noopener"
+    >https://clog95.com/</a> - I will use the code below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://clog95.com/&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">h1</span>&gt;UnityX&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span></code></pre></div><ul>
+<li>You can see, I have nested the <code>&lt;h1&gt;</code> element inside the <code>&lt;a&gt;</code> element.</li>
+<li>The <code>href</code> is <strong>an attribute</strong> for the <code>&lt;a&gt;</code> element and it has the value is <strong><a class="link" href="https://clog95.com/"  target="_blank" rel="noopener"
+    >https://clog95.com/</a></strong> placed between quotation marks( &quot;&quot; ). This value is an address that you will be redirected to when clicking on the <code>&lt;a&gt;</code> element, in this case it is my website address: <a class="link" href="https://clog95.com/"  target="_blank" rel="noopener"
+    >https://clog95.com/</a></li>
+</ul>
+<h2 id="the-final-code-of-our-html-document">The final code of our HTML document:</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">title</span>&gt;CLog95&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://clog95.com/&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>		&lt;<span style="color:#f92672">h1</span>&gt;CLog95&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;clog95-logo.png&#34;</span> <span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;CLog95&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">h2</span>&gt;Learn web development&lt;/<span style="color:#f92672">h2</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">p</span>&gt;Something you need to learn:&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>	  &lt;<span style="color:#f92672">li</span>&gt;HTML&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>	  &lt;<span style="color:#f92672">li</span>&gt;CSS&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>	  &lt;<span style="color:#f92672">li</span>&gt;Javascript&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>	  &lt;<span style="color:#f92672">li</span>&gt;PHP&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">p</span>&gt;Here I will show you some basic HTML elements and how to use CSS to style for my web page.&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><p>Now, you can download <a class="link" href="https://drive.google.com/drive/folders/1Ym2PUT3vCC4s-kWzdJyDl_LkRT8U47ch?usp=sharing"  target="_blank" rel="noopener"
+    >the code and image sample here</a> then drag and drop it into your browser to check  the result.</p>
+<div class="video-wrapper">
+    <iframe loading="lazy" 
+            src="https://www.youtube.com/embed/kRPTdSRvX4I" 
+            allowfullscreen 
+            title="YouTube Video"
+    >
+    </iframe>
+</div>
+
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "296f80a520228186ba2f",
+        clientSecret: "e3a7ca73f49a53349d5b7367655e5705cb90d10c",
+        repo: "https:\/\/github.com\/clog95\/clog95-comments",
+        owner: "",
+        admin: [""],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2022 Clog95 - Hi Guys!
+    </section>
+    
+    <section class="powerby">
+        
+            Sending my dream to the feature! <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-html">What is HTML?</a></li>
+    <li><a href="#what-is-html5">What is HTML5?</a></li>
+    <li><a href="#a-simple-html-document">A Simple HTML Document</a></li>
+    <li><a href="#html-tags">HTML Tags</a></li>
+    <li><a href="#what-is-an-html-element">What is an HTML Element?</a></li>
+    <li><a href="#images">Images</a></li>
+    <li><a href="#marking-up-text">Marking up text</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#the-final-code-of-our-html-document">The final code of our HTML document:</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
