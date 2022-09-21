@@ -118,18 +118,6 @@
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://clog95.com/about-hugo/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://clog95.com/zh-cn/%E5%85%B3%E4%BA%8E/"
-                />
-  </url><url>
-    <loc>https://clog95.com/zh-cn/%E5%85%B3%E4%BA%8E/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
                 href="https://clog95.com/about/"
                 />
     <xhtml:link

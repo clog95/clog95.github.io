@@ -6,7 +6,220 @@
         <description>Recent content in Posts on Clog95 - Hi Guys!</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sun, 11 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://clog95.com/posts/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 19 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://clog95.com/posts/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>How To Install Linux, Apache, MySQL, PHP (LAMP) stack on Ubuntu 20.04</title>
+        <link>https://clog95.com/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/</link>
+        <pubDate>Mon, 19 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://clog95.com/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/</guid>
+        <description>&lt;img src="https://clog95.com/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/install-lamp-stack-on-ubuntu-20-04.jpg" alt="Featured image of post How To Install Linux, Apache, MySQL, PHP (LAMP) stack on Ubuntu 20.04" /&gt;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;A LAMP stack is a group of four open-source software that form the foundation of building and running high performance web servers to host dynamic websites and web applications. This term is an acronym for Linux (the operating system ), Apache (the web server), MySQL (the database), PHP/Perl/Python (the programming language). Some popular LAMP applications are Wiki&amp;rsquo;s, the majority of modern Content Management Systems (CMS such as WordPress, Joomla, Drupal, and Magento require a LAMP stack to work).&lt;/p&gt;
+&lt;p&gt;To build and run a website with PHP or you use some framework of PHP such as Codeigniter or Laravel you need a LAMP stack for your web server to store data and deliver web content through the internet.&lt;/p&gt;
+&lt;p&gt;Therefore, in this guide, I will show you how to set up a LAMP stack on an Ubuntu 20.04 server for building and running the PHP applications.&lt;/p&gt;
+&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;An Ubuntu 20.04 server&lt;/li&gt;
+&lt;li&gt;A non-root sudo user&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;1-set-up-a-firewall-with-ufw-on-your-server&#34;&gt;1. Set up a Firewall with UFW on your server&lt;/h2&gt;
+&lt;p&gt;Start by updating and upgrading packages on your Ubuntu server. If this is the first time you&amp;rsquo;re using &lt;code&gt;sudo&lt;/code&gt; within this session of Terminal, you&amp;rsquo;ll be prompted to provide your user&amp;rsquo;s password to confirm you have the right privileges. Open your Terminal then enter two line commands below in order:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; the first time you run the command &lt;code&gt;sudo apt upgrade&lt;/code&gt; that it will ask: &lt;em&gt;&amp;ldquo;Do you want to continue? [Y/n]&amp;rdquo;&lt;/em&gt; - press &lt;strong&gt;y&lt;/strong&gt; then &lt;strong&gt;Enter&lt;/strong&gt; to continue.&lt;/p&gt;
+&lt;p&gt;Checking the UFW status. Normally, the default is inactive:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw status
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Let&amp;rsquo;s set the UFW to the default, deny all incoming and allow all outgoing connections:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw default deny incoming
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw default allow outgoing
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Lists the UFW apps&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw app list
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Allowing SSH connections, you need take this action to connect to the server via SSH later:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw allow OpenSSH
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Checking the UFW status again, it still inactive:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw status
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Enabling UFW, with this command will appear a question that says: &lt;em&gt;&amp;ldquo;Command may disrupt existing ssh connections. Proceed with operation (y|n)?&amp;rdquo;&lt;/em&gt; - press &lt;strong&gt;y&lt;/strong&gt; then &lt;strong&gt;Enter&lt;/strong&gt; to agree:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw enable
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Checking the UFW status again, now it is active and you can see ssh is allowed:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw status
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;2-install-apache-web-server&#34;&gt;2. Install Apache Web Server&lt;/h2&gt;
+&lt;p&gt;Apache is the most commonly used Web Server in the world. It is often used in combination with the MySQL database, the PHP scripting language, and other scripting languages such as Python or Perl. This configuration is termed LAMP (Linux, Apache, MySQL and Perl/Python/PHP) and forms a powerful and robust platform for development and deployment of the web applications. That is why it is the best choice for you.&lt;/p&gt;
+&lt;p&gt;The Apache Web Server is available in Ubuntu Linux, so to install use the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install apache2
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You&amp;rsquo;ll also be prompted to confirm Apache&amp;rsquo;s installation: &lt;em&gt;&amp;ldquo;Do you want to continue? [Y/n]&amp;rdquo;&lt;/em&gt; - press &lt;strong&gt;y&lt;/strong&gt;, then &lt;strong&gt;Enter&lt;/strong&gt; to agree.&lt;/p&gt;
+&lt;p&gt;Once the installation is finished, let&amp;rsquo;s list all currently available UFW apps,  you can run the command below:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw app list
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You&amp;rsquo;ll see the output like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Available applications:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Apache
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Apache Full
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Apache Secure
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  OpenSSH
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;With the outputs above, what does it mean?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Apache:&lt;/strong&gt; This opens only port 80 - which is what unencrypted web servers use.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Apache Full:&lt;/strong&gt; Thisopens both ports 80 and 443. Port 80 (which is what unencrypted web servers use.), 443 (which is what encrypted web servers use)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Apache Secure:&lt;/strong&gt; This opens only port 443 (TLS/SSL encrypted traffic) - which is what encrypted web servers use.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For now, it&amp;rsquo;s best to adjust the firewall to allow connections to your web server on port 80 (unencrypted web traffic), because you just installed a fresh Apache web server and you still don&amp;rsquo;t have a TLS/SSL certificate configured to allow HTTPS traffic (encrypted web traffic) on your Apache server. To allow connections on port 80, use the command below:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Available applications:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw allow &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Apache&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can check the UFW status to verify this change:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw status
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can see the output like below:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Status: active
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;To               Action        From
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;--              -------        ----
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;OpenSSH          ALLOW         Anywhere
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Apache           ALLOW         Anywhere
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;OpenSSH &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;v6&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;     ALLOW         Anywhere &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;v6&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Apache &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;v6&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;      ALLOW         Anywhere &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;v6&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To check whether you have installed Apache web server successfully, now visit &lt;strong&gt;your server&amp;rsquo;s public IP address&lt;/strong&gt; in your web browser. Replace the IP address below ( &lt;strong&gt;192.0.2.1&lt;/strong&gt; ) by &lt;strong&gt;your own server&amp;rsquo;s public IP&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;http://192.0.2.1
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You should see the default Apache web page as shown below:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://clog95.com/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/the-default-apache-web-page.png&#34;
+	width=&#34;745&#34;
+	height=&#34;1034&#34;
+	srcset=&#34;https://clog95.com/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/the-default-apache-web-page_hue68c69bad23e98837a88ee92a6ff4ee0_571218_480x0_resize_box_3.png 480w, https://clog95.com/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/the-default-apache-web-page_hue68c69bad23e98837a88ee92a6ff4ee0_571218_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;72&#34;
+		data-flex-basis=&#34;172px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The root directory&lt;/strong&gt; of &lt;strong&gt;the default Apache virtual host&lt;/strong&gt; is at &lt;strong&gt;/var/www/html&lt;/strong&gt; and it has an &lt;strong&gt;index.html&lt;/strong&gt; file. This file contains the information of the default Apache web page and you just saw this page above. You can check by go into &lt;strong&gt;/var/www/html&lt;/strong&gt; directory by the &lt;code&gt;cd&lt;/code&gt; command then list all files in this directory by the &lt;code&gt;ls&lt;/code&gt; command and you should see an &lt;strong&gt;index.html&lt;/strong&gt; file is listed:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd /var/www/html
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ls
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, you should see the &lt;strong&gt;index.html&lt;/strong&gt; file is listed on the output:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;index.html
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;The default virtual host&amp;rsquo;s configuration file&lt;/strong&gt; is located in &lt;strong&gt;/etc/apache2/sites-available&lt;/strong&gt; directory and its name is &lt;strong&gt;000-default.conf&lt;/strong&gt;. You can see this configuration file by going into &lt;strong&gt;/etc/apache2/sites-available&lt;/strong&gt; directory by the &lt;code&gt;cd&lt;/code&gt; command then list all files in this directory by the &lt;code&gt;ls&lt;/code&gt; command and you should see a file that its name is &lt;strong&gt;000-default.conf&lt;/strong&gt; :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd /etc/apache2/sites-available
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ls
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You should see the &lt;strong&gt;000-default.conf&lt;/strong&gt; file is listed on the output:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;000-default.conf  default-ssl.conf 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Open the &lt;strong&gt;000-default.conf&lt;/strong&gt; file by the &lt;code&gt;cat&lt;/code&gt; command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat 000-default.conf 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After run the command above, it will show the content of the &lt;strong&gt;000-default.conf&lt;/strong&gt; file for you, and you can find to see line of the &lt;code&gt;DocumentRoot&lt;/code&gt; directive as bellow:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;VirtualHost *:80&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ServerAdmin webmaster@localhost
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        DocumentRoot /var/www/html
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/VirtualHost&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; the &lt;strong&gt;000-default.conf&lt;/strong&gt; file is a configuration file of &lt;strong&gt;the default Apache virtual host&lt;/strong&gt;. And you pay attention to the &lt;code&gt;DocumentRoot&lt;/code&gt; directive above, this directive specifies &lt;strong&gt;/var/www/html&lt;/strong&gt; directory is &lt;strong&gt;the root directory&lt;/strong&gt; of &lt;strong&gt;the default Apache virtual host&lt;/strong&gt;. And we just have covered above that the &lt;strong&gt;/var/www/html&lt;/strong&gt; directory has an &lt;strong&gt;index.html&lt;/strong&gt; file by default. The &lt;strong&gt;/var/www/html&lt;/strong&gt; directory is &lt;strong&gt;the root directory&lt;/strong&gt; of &lt;strong&gt;the default Apache virtual host&lt;/strong&gt; that holds the assets of the site such as PHP script, HTML, CSS and Javascript files, images.&lt;/p&gt;
+&lt;p&gt;Now we have installed Apache web server and covered &lt;strong&gt;the root directory&lt;/strong&gt; and &lt;strong&gt;the configuration file&lt;/strong&gt; of &lt;strong&gt;the default Apache virtual host&lt;/strong&gt;. Next step, we will install the MySQL database system on the server to store the data for your site.&lt;/p&gt;
+&lt;h2 id=&#34;3-install-mysql&#34;&gt;3. Install MySQL&lt;/h2&gt;
+&lt;p&gt;MySQL is a popular database management system that is used combined with PHP on server side to handle and store datas from the users for your site.&lt;/p&gt;
+&lt;p&gt;To install MySQL, run the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install mysql-server
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;When you are prompted to confirm the installation: &lt;em&gt;&amp;ldquo;Do you want to continue? [Y/n]&amp;rdquo;&lt;/em&gt; - press &lt;strong&gt;y&lt;/strong&gt; then &lt;strong&gt;Enter&lt;/strong&gt; to agree.&lt;/p&gt;
+&lt;p&gt;When the installation is done, I recommend you take an extra step to ensure security for your server. Now run the command below to start the script that will re-setup some insecure options of the default configuration on your MySQL.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo mysql_secure_installation
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;By running the command above, it will walk you through some extra steps to change some of your MySQL installation&amp;rsquo;s security options. The first will ask whether you&amp;rsquo;d like to set up &lt;strong&gt;the VALIDATE PASSWORD component&lt;/strong&gt;. This component will help you check a password that satisfies the specified criteria.&lt;/p&gt;
+&lt;p&gt;Press &lt;strong&gt;y&lt;/strong&gt; to set up the VALIDATE PASSWORD component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;VALIDATE PASSWORD COMPONENT can be used to test passwords
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;and improve security. It checks the strength of password
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;and allows the users to set only those passwords which are
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;secure enough. Would you like to setup VALIDATE PASSWORD component?
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Press y|Y &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; Yes, any other key &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; No: y
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, it will show you 3 levels of password validation: &lt;strong&gt;LOW&lt;/strong&gt;, &lt;strong&gt;MEDIUM&lt;/strong&gt; and &lt;strong&gt;STRONG&lt;/strong&gt;. You can choose one of 3 levels by pressing &lt;strong&gt;0&lt;/strong&gt; for &lt;strong&gt;LOW&lt;/strong&gt;, &lt;strong&gt;1&lt;/strong&gt; for &lt;strong&gt;MEDIUM&lt;/strong&gt; and &lt;strong&gt;2&lt;/strong&gt; for &lt;strong&gt;STRONG&lt;/strong&gt;. Keep in mind that if you enter &lt;strong&gt;2&lt;/strong&gt; for the strongest level, you will receive errors when attempting to set any password which does not contain numbers, upper and lowercase letters, and special characters, or which is based on common dictionary words. To simple, I choose &lt;strong&gt;0&lt;/strong&gt; for &lt;strong&gt;LOW&lt;/strong&gt; level:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;There are three levels of password validation policy:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;LOW    Length &amp;gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;MEDIUM Length &amp;gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 8, numeric, mixed &lt;span style=&#34;color:#66d9ef&#34;&gt;case&lt;/span&gt;, and special characters
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;STRONG Length &amp;gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 8, numeric, mixed &lt;span style=&#34;color:#66d9ef&#34;&gt;case&lt;/span&gt;, special characters and dictionary file
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Please enter 0 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; LOW, 1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; MEDIUM and 2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; STRONG: &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Next, it will ask you to set a password for &lt;strong&gt;MySQL root user&lt;/strong&gt; (don&amp;rsquo;t confuse it with &lt;strong&gt;the system root user&lt;/strong&gt;). When you enter the password which is invisible for you, then re-enter the password again and Enter to continue.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Please set the password &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; root here.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;New password:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Re-enter new password:
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Because we have set up &lt;strong&gt;the VALIDATE PASSWORD component&lt;/strong&gt;, it will estimate the strength of the password you just entered. And ask whether you wish to continue with that password. If you are satisfied with it&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Estimated strength of the password: &lt;span style=&#34;color:#ae81ff&#34;&gt;25&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Do you wish to &lt;span style=&#34;color:#66d9ef&#34;&gt;continue&lt;/span&gt; with the password provided?&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Press y|Y &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; Yes, any other key &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; No&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; :
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;==Conflicting&amp;hellip;==&lt;/p&gt;
+&lt;h2 id=&#34;4-install-php&#34;&gt;4. Install PHP&lt;/h2&gt;
+&lt;p&gt;We have installed Apache to serve your site&amp;rsquo;s assets such as store folders, files, images and site&amp;rsquo;s configuration files. MySQL to store, handle and manage your site&amp;rsquo;s data. Now, we will install PHP and PHP codes will be used combined with Apache and MySQL to handle the datas then display the dynamic content to the visitor.&lt;/p&gt;
+&lt;p&gt;In addition, to PHP can work together with Apache and MySQL you need the Apache PHP module is &lt;code&gt;libapache2-mod-php&lt;/code&gt; to enable Apache to handle PHP files, and the &lt;code&gt;php-mysql&lt;/code&gt; package to allow PHP to communicate with MySQL databases.&lt;/p&gt;
+&lt;p&gt;To install PHP and those above, run the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install php libapache2-mod-php php-mysql
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;It will ask whether you want to continue the process installation: &lt;em&gt;&amp;ldquo;Do you want to continue? [Y/n]&amp;rdquo;&lt;/em&gt; - press &lt;strong&gt;y&lt;/strong&gt; then &lt;strong&gt;Enter&lt;/strong&gt; to agree to install.&lt;/p&gt;
+&lt;p&gt;Once the installation is finished , you can confirm the version of PHP by the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;php -v
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The output look like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PHP 7.4.3 &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;cli&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;built: Jun &lt;span style=&#34;color:#ae81ff&#34;&gt;13&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2022&lt;/span&gt; 13:43:30&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt; NTS &lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Copyright &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;c&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; The PHP Group
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Zend Engine v3.4.0, Copyright &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;c&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; Zend Technologies
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    with Zend OPcache v7.4.3, Copyright &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;c&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, by Zend Technologies
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;At this point, you have fully installed LAMP stack: Apache2 Web Server, MySQL database management system, and PHP scripting language. It&amp;rsquo;s time to set up a new Apache Virtual Host to serve your new site. Let&amp;rsquo;s go to the next step.&lt;/p&gt;
+&lt;h2 id=&#34;5-create-an-apache-virtual-host-for-your-site&#34;&gt;5. Create an Apache Virtual Host for Your Site.&lt;/h2&gt;
+&lt;p&gt;As we have covered in step 2 that Apache has &lt;strong&gt;a default virtual host&lt;/strong&gt; with its own &lt;strong&gt;configuration file&lt;/strong&gt; and &lt;strong&gt;root directory&lt;/strong&gt;. But, instead of using and modifying the default Apache virtual host you should create a new virtual host with its own configuration file and root directory. And you can freely create additional virtual hosts for multiple websites on the same server, &lt;strong&gt;a virtual host serves for a website (serves for a domain)&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;To create &lt;strong&gt;a virtual host&lt;/strong&gt; you need to create &lt;strong&gt;a configuration file&lt;/strong&gt; for it in the &lt;strong&gt;/etc/apache2/sites-available&lt;/strong&gt; directory, the same location of &lt;strong&gt;the default virtual host&amp;rsquo;s configuration file&lt;/strong&gt; is &lt;strong&gt;000-default.conf&lt;/strong&gt; file. Then you specify the &lt;code&gt;DocumentRoot&lt;/code&gt; directive inside &lt;strong&gt;the configuration file&lt;/strong&gt; to &lt;strong&gt;the root directory&lt;/strong&gt; of the virtual host. &lt;strong&gt;The root directory&lt;/strong&gt; is the directory you need to create for &lt;strong&gt;the virtual host&lt;/strong&gt; to hold assets of the site such as PHP script, HTML, CSS and Javascript files, images. And you must create &lt;strong&gt;the root directory&lt;/strong&gt; in the &lt;strong&gt;/var/www&lt;/strong&gt; directory, the same location of &lt;strong&gt;the default virtual host&amp;rsquo;s root directory&lt;/strong&gt; is &lt;strong&gt;/var/www/html&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;First, create &lt;strong&gt;a configuration file&lt;/strong&gt; in Apache&amp;rsquo;s &lt;strong&gt;sites-available&lt;/strong&gt; directory. Assuming we have a domain is &lt;strong&gt;your_domain.com&lt;/strong&gt; - replace with your own domain, we will name &lt;strong&gt;the configuration file&lt;/strong&gt; is &lt;strong&gt;your_domain.conf&lt;/strong&gt; - replace &lt;strong&gt;your_domain&lt;/strong&gt; based on your domain. Here I use the command-line editor is &lt;code&gt;nano&lt;/code&gt; to generate and edit &lt;strong&gt;the configuration file&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo nano /etc/apache2/sites-available/your_domain.conf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The command above will create a new blank file, now copy and paste into it the following configuration code block - &lt;strong&gt;Note:&lt;/strong&gt; replace &lt;strong&gt;your_domain.com&lt;/strong&gt; in the line &lt;code&gt;ServerName your_domain.com&lt;/code&gt; bellow by your own domain:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;VirtualHost *:80&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ServerName your_domain.com
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ServerAdmin webmaster@localhost
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    DocumentRoot /var/www/your_domain
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ErrorLog &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;APACHE_LOG_DIR&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;/error.log
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    CustomLog &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;APACHE_LOG_DIR&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;/access.log combined
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/VirtualHost&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Save and close the file when you&amp;rsquo;re done. Because we have used &lt;code&gt;nano&lt;/code&gt;, press &lt;strong&gt;Ctrl+X&lt;/strong&gt;, then press &lt;strong&gt;y&lt;/strong&gt; and &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Important:&lt;/strong&gt; If you use your own domain name, you must set up the DNS on your domain name registrar to point your domain to your server&amp;rsquo;s public IP address. You can search this way on Google.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You can see the &lt;code&gt;DocumentRoot&lt;/code&gt; directive of &lt;strong&gt;the configuration file&lt;/strong&gt; just created is specified to &lt;strong&gt;/var/www/your_domain&lt;/strong&gt; directory. Now create &lt;strong&gt;your_domain&lt;/strong&gt; directory in the &lt;strong&gt;/var/www&lt;/strong&gt; directory as &lt;strong&gt;the root directory&lt;/strong&gt; of &lt;strong&gt;your virtual host&lt;/strong&gt;, use the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo mkdir /var/www/your_domain
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Next, assign &lt;strong&gt;ownership&lt;/strong&gt; to the &lt;strong&gt;your_domain&lt;/strong&gt; directory is your current system user by using the &lt;code&gt;$USER&lt;/code&gt; environment variable:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo chown -R $USER:$USER /var/www/your_domain
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We have finished creating &lt;strong&gt;a new virtual host&lt;/strong&gt; with its &lt;strong&gt;own configuration file&lt;/strong&gt; and &lt;strong&gt;web root directory&lt;/strong&gt;. And currently your Apache server has two virtual hosts: the default virtual host and the new virtual host you just created for &lt;strong&gt;your_domain.com&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Now, you must enable the new virtual host that is just created by using &lt;code&gt;a2ensite&lt;/code&gt; command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo a2ensite your_domain
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Important:&lt;/strong&gt; If you only want to test the virtual host that is just created and not using a domain name - by this way you only need use &lt;strong&gt;the server&amp;rsquo;s public IP address&lt;/strong&gt; to access your site. Now, you can remove or comment out the line of the &lt;code&gt;ServerName&lt;/code&gt; directive in the configuration file, re-open the &lt;strong&gt;your_domain.conf&lt;/strong&gt; file use &lt;code&gt;nano&lt;/code&gt;:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo nano /etc/apache2/sites-available/your_domain.conf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then remove the line of the &lt;code&gt;ServerName&lt;/code&gt; directive, you can comment out by put the &lt;strong&gt;#&lt;/strong&gt; character before this directive as bellow or remove the line of the &lt;code&gt;ServerName&lt;/code&gt; directive:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;VirtualHost *:80&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;#ServerName your_domain.com&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ServerAdmin webmaster@localhost
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    DocumentRoot /var/www/your_domain
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ErrorLog &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;APACHE_LOG_DIR&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;/error.log
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    CustomLog &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;APACHE_LOG_DIR&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;/access.log combined
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/VirtualHost&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, you must disable the default virtual host by using &lt;code&gt;a2dissite&lt;/code&gt; command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo a2dissite 000-default
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To checking whether your configuration you made doesn&amp;rsquo;t contain syntax errors, run the command below:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apache2ctl configtest
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Finally, reload Apache so these changes take effect:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl reload apache2
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Your new site is now active, and you can visit &lt;strong&gt;your_domain.com&lt;/strong&gt; or the &lt;strong&gt;public IP address&lt;/strong&gt; of your server (in the case not using a domain name). But before you do that, you need to create an &lt;strong&gt;index.php&lt;/strong&gt; file inside the root &lt;strong&gt;/var/www/your_domain&lt;/strong&gt; directory:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nano /var/www/your_domain/index.php
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The command above will create a new blank file, copy and paste the PHP codes bellow into it:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;?php
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;phpinfo&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, open your browser and access &lt;strong&gt;your_domain.com&lt;/strong&gt; or &lt;strong&gt;your server&amp;rsquo;s public IP address&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;http://yoour_domian.com or http://public_ip_address
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You&amp;rsquo;ll see a page similar to this:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://clog95.com/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/install-php-on-ubuntu-20-04.png&#34;
+	width=&#34;1077&#34;
+	height=&#34;911&#34;
+	srcset=&#34;https://clog95.com/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/install-php-on-ubuntu-20-04_hu45fc3ee5cf7c87c5548e8a54c7676bc8_215990_480x0_resize_box_3.png 480w, https://clog95.com/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/install-php-on-ubuntu-20-04_hu45fc3ee5cf7c87c5548e8a54c7676bc8_215990_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;118&#34;
+		data-flex-basis=&#34;283px&#34;
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Png Trees Graphic Resources Variety Is Available for Download</title>
         <link>https://clog95.com/posts/png-trees-graphic-resources-variety-is-available-for-download/</link>
         <pubDate>Sun, 11 Sep 2022 00:00:00 +0000</pubDate>
@@ -973,26 +1186,35 @@ You can note &lt;code&gt;src&lt;/code&gt; and &lt;code&gt;alt&lt;/code&gt; that 
     &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;&lt;span class=&#34;cite&#34;&gt;&lt;span&gt;― &lt;/span&gt;&lt;span&gt;Somebody&lt;/span&gt;&lt;cite&gt;&lt;/cite&gt;&lt;/span&gt;&lt;/blockquote&gt;</description>
         </item>
         <item>
-        <title>مثال نص</title>
+        <title>Placeholder Text</title>
         <link>https://clog95.com/posts/placeholder-text/</link>
         <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
         
         <guid>https://clog95.com/posts/placeholder-text/</guid>
-        <description>&lt;img src="https://clog95.com/posts/placeholder-text/matt-le-SJSpo9hQf7s-unsplash.jpg" alt="Featured image of post مثال نص" /&gt;&lt;h2 id=&#34;فقرة-1&#34;&gt;فقرة 1&lt;/h2&gt;
-&lt;p&gt;هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من &lt;a class=&#34;link&#34; href=&#34;https://colorslab.com/textgator/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;مولد النص العربى&lt;/a&gt;، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.
-إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع.
-ومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل الشكل كاملاً،دور مولد النص العربى أن يوفر على المصمم عناء البحث عن نص بديل لا علاقة له بالموضوع الذى يتحدث عنه التصميم فيظهر بشكل لا يليق.
-هذا النص يمكن أن يتم تركيبه على أي تصميم دون مشكلة فلن يبدو وكأنه نص منسوخ، غير منظم، غير منسق، أو حتى غير مفهوم. لأنه مازال نصاً بديلاً ومؤقتاً.&lt;/p&gt;
-&lt;h2 id=&#34;فقرة-2&#34;&gt;فقرة 2&lt;/h2&gt;
-&lt;p&gt;هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من &lt;a class=&#34;link&#34; href=&#34;https://colorslab.com/textgator/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;مولد النص العربى&lt;/a&gt;، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.
-إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع.
-ومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل الشكل كاملاً،دور مولد النص العربى أن يوفر على المصمم عناء البحث عن نص بديل لا علاقة له بالموضوع الذى يتحدث عنه التصميم فيظهر بشكل لا يليق.
-هذا النص يمكن أن يتم تركيبه على أي تصميم دون مشكلة فلن يبدو وكأنه نص منسوخ، غير منظم، غير منسق، أو حتى غير مفهوم. لأنه مازال نصاً بديلاً ومؤقتاً.&lt;/p&gt;
-&lt;h2 id=&#34;تجربة-rtl&#34;&gt;تجربة RTL&lt;/h2&gt;
-&lt;p&gt;كلمة 1 Text كلمة 2&lt;/p&gt;
-</description>
+        <description>&lt;img src="https://clog95.com/posts/placeholder-text/matt-le-SJSpo9hQf7s-unsplash.jpg" alt="Featured image of post Placeholder Text" /&gt;&lt;p&gt;Lorem est tota propiore conpellat pectoribus de pectora summo.&lt;/p&gt;
+&lt;p&gt;Redit teque digerit hominumque toris verebor lumina non cervice subde tollit usus habet Arctonque, furores quas nec ferunt. Quoque montibus nunc caluere tempus inhospita parcite confusaque translucet patri vestro qui optatis lumine cognoscere flos nubis! Fronde ipsamque patulos Dryopen deorum.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Exierant elisi ambit vivere dedere&lt;/li&gt;
+&lt;li&gt;Duce pollice&lt;/li&gt;
+&lt;li&gt;Eris modo&lt;/li&gt;
+&lt;li&gt;Spargitque ferrea quos palude&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Rursus nulli murmur; hastile inridet ut ab gravi sententia! Nomine potitus silentia flumen, sustinet placuit petis in dilapsa erat sunt. Atria tractus malis.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Comas hunc haec pietate fetum procerum dixit&lt;/li&gt;
+&lt;li&gt;Post torum vates letum Tiresia&lt;/li&gt;
+&lt;li&gt;Flumen querellas&lt;/li&gt;
+&lt;li&gt;Arcanaque montibus omnes&lt;/li&gt;
+&lt;li&gt;Quidem et&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;vagus-elidunt&#34;&gt;Vagus elidunt&lt;/h1&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Canons_of_page_construction#Van_de_Graaf_canon&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;The Van de Graaf Canon&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;mane-refeci-capiebant-unda-mulcebat&#34;&gt;Mane refeci capiebant unda mulcebat&lt;/h2&gt;
+&lt;p&gt;Victa caducifer, malo vulnere contra dicere aurato, ludit regale, voca! Retorsit colit est profanae esse virescere furit nec; iaculi matertera et visa est, viribus. Divesque creatis, tecta novat collumque vulnus est, parvas. &lt;strong&gt;Faces illo pepulere&lt;/strong&gt; tempus adest. Tendit flamma, ab opes virum sustinet, sidus sequendo urbis.&lt;/p&gt;
+&lt;p&gt;Iubar proles corpore raptos vero auctor imperium; sed et huic: manus caeli Lelegas tu lux. Verbis obstitit intus oblectamina fixis linguisque ausus sperare Echionides cornuaque tenent clausit possit. Omnia putatur. Praeteritae refert ausus; ferebant e primus lora nutat, vici quae mea ipse. Et iter nil spectatae vulnus haerentia iuste et exercebat, sui et.&lt;/p&gt;
+&lt;p&gt;Eurytus Hector, materna ipsumque ut Politen, nec, nate, ignari, vernum cohaesit sequitur. Vel &lt;strong&gt;mitis temploque&lt;/strong&gt; vocatus, inque alis, &lt;em&gt;oculos nomen&lt;/em&gt; non silvis corpore coniunx ne displicet illa. Crescunt non unus, vidit visa quantum inmiti flumina mortis facto sic: undique a alios vincula sunt iactata abdita! Suspenderat ego fuit tendit: luna, ante urbem Propoetides &lt;strong&gt;parte&lt;/strong&gt;.&lt;/p&gt;</description>
         </item>
         <item>
         <title>Math Typesetting</title>

@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introduction A LAMP stack is a group of four open-source software that form the foundation of building and running high performance web servers to host dynamic websites and web applications. This term is an acronym for Linux (the operating system ), Apache (the web server), MySQL (the database), PHP/Perl/Python (the programming language). Some popular LAMP applications are Wiki&amp;rsquo;s, the majority of modern Content Management Systems (CMS such as WordPress, Joomla, Drupal, and Magento require a LAMP stack to work).'><title>How To Install Linux, Apache, MySQL, PHP (LAMP) stack on Ubuntu 20.04</title>
+
+<link rel='canonical' href='https://clog95.com/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/'>
+
+<link rel="stylesheet" href="/scss/style.min.5a8e892f6fa14515e9065eee1f5d2e05302606ec7f11750b2fb95198f9cdcbfd.css"><meta property='og:title' content='How To Install Linux, Apache, MySQL, PHP (LAMP) stack on Ubuntu 20.04'>
+<meta property='og:description' content='Introduction A LAMP stack is a group of four open-source software that form the foundation of building and running high performance web servers to host dynamic websites and web applications. This term is an acronym for Linux (the operating system ), Apache (the web server), MySQL (the database), PHP/Perl/Python (the programming language). Some popular LAMP applications are Wiki&amp;rsquo;s, the majority of modern Content Management Systems (CMS such as WordPress, Joomla, Drupal, and Magento require a LAMP stack to work).'>
+<meta property='og:url' content='https://clog95.com/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/'>
+<meta property='og:site_name' content='Clog95 - Hi Guys!'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:published_time' content='2022-09-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-09-19T00:00:00&#43;00:00'/><meta property='og:image' content='https://clog95.com/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/install-lamp-stack-on-ubuntu-20-04.jpg' />
+<meta name="twitter:title" content="How To Install Linux, Apache, MySQL, PHP (LAMP) stack on Ubuntu 20.04">
+<meta name="twitter:description" content="Introduction A LAMP stack is a group of four open-source software that form the foundation of building and running high performance web servers to host dynamic websites and web applications. This term is an acronym for Linux (the operating system ), Apache (the web server), MySQL (the database), PHP/Perl/Python (the programming language). Some popular LAMP applications are Wiki&amp;rsquo;s, the majority of modern Content Management Systems (CMS such as WordPress, Joomla, Drupal, and Magento require a LAMP stack to work)."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://clog95.com/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/install-lamp-stack-on-ubuntu-20-04.jpg' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky compact">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/images/logo-150x150_hu13ca961c3153d695f5536b0ec20f4b1f_3776_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Clog95 - Hi Guys!</a></h1>
+            <h2 class="site-description">Small steps are the best way to tackle big goals.</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://clog95.com/" selected>English</option>
+                        
+                            <option value="https://clog95.com/vn/" >Việt Nam</option>
+                        
+                            <option value="https://clog95.com/ru/" >россия</option>
+                        
+                            <option value="https://clog95.com/zh-cn/" >中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/">
+                <img src="/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/install-lamp-stack-on-ubuntu-20-04_hu9f3f570c947ed5d7ef512b1238fd45e1_88144_800x0_resize_q75_box.jpg"
+                        srcset="/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/install-lamp-stack-on-ubuntu-20-04_hu9f3f570c947ed5d7ef512b1238fd45e1_88144_800x0_resize_q75_box.jpg 800w, /posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/install-lamp-stack-on-ubuntu-20-04_hu9f3f570c947ed5d7ef512b1238fd45e1_88144_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post How To Install Linux, Apache, MySQL, PHP (LAMP) stack on Ubuntu 20.04" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/web-development/" >
+                Web Development
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/">How To Install Linux, Apache, MySQL, PHP (LAMP) stack on Ubuntu 20.04</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 19, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    12 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="introduction">Introduction</h2>
+<p>A LAMP stack is a group of four open-source software that form the foundation of building and running high performance web servers to host dynamic websites and web applications. This term is an acronym for Linux (the operating system ), Apache (the web server), MySQL (the database), PHP/Perl/Python (the programming language). Some popular LAMP applications are Wiki&rsquo;s, the majority of modern Content Management Systems (CMS such as WordPress, Joomla, Drupal, and Magento require a LAMP stack to work).</p>
+<p>To build and run a website with PHP or you use some framework of PHP such as Codeigniter or Laravel you need a LAMP stack for your web server to store data and deliver web content through the internet.</p>
+<p>Therefore, in this guide, I will show you how to set up a LAMP stack on an Ubuntu 20.04 server for building and running the PHP applications.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>An Ubuntu 20.04 server</li>
+<li>A non-root sudo user</li>
+</ul>
+<h2 id="1-set-up-a-firewall-with-ufw-on-your-server">1. Set up a Firewall with UFW on your server</h2>
+<p>Start by updating and upgrading packages on your Ubuntu server. If this is the first time you&rsquo;re using <code>sudo</code> within this session of Terminal, you&rsquo;ll be prompted to provide your user&rsquo;s password to confirm you have the right privileges. Open your Terminal then enter two line commands below in order:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt update
+</span></span><span style="display:flex;"><span>sudo apt upgrade
+</span></span></code></pre></div><p><strong>Note:</strong> the first time you run the command <code>sudo apt upgrade</code> that it will ask: <em>&ldquo;Do you want to continue? [Y/n]&rdquo;</em> - press <strong>y</strong> then <strong>Enter</strong> to continue.</p>
+<p>Checking the UFW status. Normally, the default is inactive:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo ufw status
+</span></span></code></pre></div><p>Let&rsquo;s set the UFW to the default, deny all incoming and allow all outgoing connections:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo ufw default deny incoming
+</span></span><span style="display:flex;"><span>sudo ufw default allow outgoing
+</span></span></code></pre></div><p>Lists the UFW apps</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo ufw app list
+</span></span></code></pre></div><p>Allowing SSH connections, you need take this action to connect to the server via SSH later:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo ufw allow OpenSSH
+</span></span></code></pre></div><p>Checking the UFW status again, it still inactive:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo ufw status
+</span></span></code></pre></div><p>Enabling UFW, with this command will appear a question that says: <em>&ldquo;Command may disrupt existing ssh connections. Proceed with operation (y|n)?&rdquo;</em> - press <strong>y</strong> then <strong>Enter</strong> to agree:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo ufw enable
+</span></span></code></pre></div><p>Checking the UFW status again, now it is active and you can see ssh is allowed:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo ufw status
+</span></span></code></pre></div><h2 id="2-install-apache-web-server">2. Install Apache Web Server</h2>
+<p>Apache is the most commonly used Web Server in the world. It is often used in combination with the MySQL database, the PHP scripting language, and other scripting languages such as Python or Perl. This configuration is termed LAMP (Linux, Apache, MySQL and Perl/Python/PHP) and forms a powerful and robust platform for development and deployment of the web applications. That is why it is the best choice for you.</p>
+<p>The Apache Web Server is available in Ubuntu Linux, so to install use the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt install apache2
+</span></span></code></pre></div><p>You&rsquo;ll also be prompted to confirm Apache&rsquo;s installation: <em>&ldquo;Do you want to continue? [Y/n]&rdquo;</em> - press <strong>y</strong>, then <strong>Enter</strong> to agree.</p>
+<p>Once the installation is finished, let&rsquo;s list all currently available UFW apps,  you can run the command below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo ufw app list
+</span></span></code></pre></div><p>You&rsquo;ll see the output like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Available applications:
+</span></span><span style="display:flex;"><span>  Apache
+</span></span><span style="display:flex;"><span>  Apache Full
+</span></span><span style="display:flex;"><span>  Apache Secure
+</span></span><span style="display:flex;"><span>  OpenSSH
+</span></span></code></pre></div><p>With the outputs above, what does it mean?</p>
+<ul>
+<li><strong>Apache:</strong> This opens only port 80 - which is what unencrypted web servers use.</li>
+<li><strong>Apache Full:</strong> Thisopens both ports 80 and 443. Port 80 (which is what unencrypted web servers use.), 443 (which is what encrypted web servers use)</li>
+<li><strong>Apache Secure:</strong> This opens only port 443 (TLS/SSL encrypted traffic) - which is what encrypted web servers use.</li>
+</ul>
+<p>For now, it&rsquo;s best to adjust the firewall to allow connections to your web server on port 80 (unencrypted web traffic), because you just installed a fresh Apache web server and you still don&rsquo;t have a TLS/SSL certificate configured to allow HTTPS traffic (encrypted web traffic) on your Apache server. To allow connections on port 80, use the command below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Available applications:
+</span></span><span style="display:flex;"><span>sudo ufw allow <span style="color:#e6db74">&#34;Apache&#34;</span>
+</span></span></code></pre></div><p>You can check the UFW status to verify this change:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo ufw status
+</span></span></code></pre></div><p>You can see the output like below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Status: active
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>To               Action        From
+</span></span><span style="display:flex;"><span>--              -------        ----
+</span></span><span style="display:flex;"><span>OpenSSH          ALLOW         Anywhere
+</span></span><span style="display:flex;"><span>Apache           ALLOW         Anywhere
+</span></span><span style="display:flex;"><span>OpenSSH <span style="color:#f92672">(</span>v6<span style="color:#f92672">)</span>     ALLOW         Anywhere <span style="color:#f92672">(</span>v6<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Apache <span style="color:#f92672">(</span>v6<span style="color:#f92672">)</span>      ALLOW         Anywhere <span style="color:#f92672">(</span>v6<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>To check whether you have installed Apache web server successfully, now visit <strong>your server&rsquo;s public IP address</strong> in your web browser. Replace the IP address below ( <strong>192.0.2.1</strong> ) by <strong>your own server&rsquo;s public IP</strong>:</p>
+<pre tabindex="0"><code>http://192.0.2.1
+</code></pre><p>You should see the default Apache web page as shown below:</p>
+<p><img src="/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/the-default-apache-web-page.png"
+	width="745"
+	height="1034"
+	srcset="/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/the-default-apache-web-page_hue68c69bad23e98837a88ee92a6ff4ee0_571218_480x0_resize_box_3.png 480w, /posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/the-default-apache-web-page_hue68c69bad23e98837a88ee92a6ff4ee0_571218_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="72"
+		data-flex-basis="172px"
+	
+></p>
+<p><strong>The root directory</strong> of <strong>the default Apache virtual host</strong> is at <strong>/var/www/html</strong> and it has an <strong>index.html</strong> file. This file contains the information of the default Apache web page and you just saw this page above. You can check by go into <strong>/var/www/html</strong> directory by the <code>cd</code> command then list all files in this directory by the <code>ls</code> command and you should see an <strong>index.html</strong> file is listed:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd /var/www/html
+</span></span><span style="display:flex;"><span>ls
+</span></span></code></pre></div><p>Now, you should see the <strong>index.html</strong> file is listed on the output:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>index.html
+</span></span></code></pre></div><p><strong>The default virtual host&rsquo;s configuration file</strong> is located in <strong>/etc/apache2/sites-available</strong> directory and its name is <strong>000-default.conf</strong>. You can see this configuration file by going into <strong>/etc/apache2/sites-available</strong> directory by the <code>cd</code> command then list all files in this directory by the <code>ls</code> command and you should see a file that its name is <strong>000-default.conf</strong> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd /etc/apache2/sites-available
+</span></span><span style="display:flex;"><span>ls
+</span></span></code></pre></div><p>You should see the <strong>000-default.conf</strong> file is listed on the output:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>000-default.conf  default-ssl.conf 
+</span></span></code></pre></div><p>Open the <strong>000-default.conf</strong> file by the <code>cat</code> command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat 000-default.conf 
+</span></span></code></pre></div><p>After run the command above, it will show the content of the <strong>000-default.conf</strong> file for you, and you can find to see line of the <code>DocumentRoot</code> directive as bellow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        ServerAdmin webmaster@localhost
+</span></span><span style="display:flex;"><span>        DocumentRoot /var/www/html
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span></code></pre></div><p><strong>Note:</strong> the <strong>000-default.conf</strong> file is a configuration file of <strong>the default Apache virtual host</strong>. And you pay attention to the <code>DocumentRoot</code> directive above, this directive specifies <strong>/var/www/html</strong> directory is <strong>the root directory</strong> of <strong>the default Apache virtual host</strong>. And we just have covered above that the <strong>/var/www/html</strong> directory has an <strong>index.html</strong> file by default. The <strong>/var/www/html</strong> directory is <strong>the root directory</strong> of <strong>the default Apache virtual host</strong> that holds the assets of the site such as PHP script, HTML, CSS and Javascript files, images.</p>
+<p>Now we have installed Apache web server and covered <strong>the root directory</strong> and <strong>the configuration file</strong> of <strong>the default Apache virtual host</strong>. Next step, we will install the MySQL database system on the server to store the data for your site.</p>
+<h2 id="3-install-mysql">3. Install MySQL</h2>
+<p>MySQL is a popular database management system that is used combined with PHP on server side to handle and store datas from the users for your site.</p>
+<p>To install MySQL, run the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt install mysql-server
+</span></span></code></pre></div><p>When you are prompted to confirm the installation: <em>&ldquo;Do you want to continue? [Y/n]&rdquo;</em> - press <strong>y</strong> then <strong>Enter</strong> to agree.</p>
+<p>When the installation is done, I recommend you take an extra step to ensure security for your server. Now run the command below to start the script that will re-setup some insecure options of the default configuration on your MySQL.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo mysql_secure_installation
+</span></span></code></pre></div><p>By running the command above, it will walk you through some extra steps to change some of your MySQL installation&rsquo;s security options. The first will ask whether you&rsquo;d like to set up <strong>the VALIDATE PASSWORD component</strong>. This component will help you check a password that satisfies the specified criteria.</p>
+<p>Press <strong>y</strong> to set up the VALIDATE PASSWORD component:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>VALIDATE PASSWORD COMPONENT can be used to test passwords
+</span></span><span style="display:flex;"><span>and improve security. It checks the strength of password
+</span></span><span style="display:flex;"><span>and allows the users to set only those passwords which are
+</span></span><span style="display:flex;"><span>secure enough. Would you like to setup VALIDATE PASSWORD component?
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Press y|Y <span style="color:#66d9ef">for</span> Yes, any other key <span style="color:#66d9ef">for</span> No: y
+</span></span></code></pre></div><p>Now, it will show you 3 levels of password validation: <strong>LOW</strong>, <strong>MEDIUM</strong> and <strong>STRONG</strong>. You can choose one of 3 levels by pressing <strong>0</strong> for <strong>LOW</strong>, <strong>1</strong> for <strong>MEDIUM</strong> and <strong>2</strong> for <strong>STRONG</strong>. Keep in mind that if you enter <strong>2</strong> for the strongest level, you will receive errors when attempting to set any password which does not contain numbers, upper and lowercase letters, and special characters, or which is based on common dictionary words. To simple, I choose <strong>0</strong> for <strong>LOW</strong> level:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>There are three levels of password validation policy:
+</span></span><span style="display:flex;"><span>LOW    Length &gt;<span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>
+</span></span><span style="display:flex;"><span>MEDIUM Length &gt;<span style="color:#f92672">=</span> 8, numeric, mixed <span style="color:#66d9ef">case</span>, and special characters
+</span></span><span style="display:flex;"><span>STRONG Length &gt;<span style="color:#f92672">=</span> 8, numeric, mixed <span style="color:#66d9ef">case</span>, special characters and dictionary file
+</span></span><span style="display:flex;"><span>Please enter 0 <span style="color:#f92672">=</span> LOW, 1 <span style="color:#f92672">=</span> MEDIUM and 2 <span style="color:#f92672">=</span> STRONG: <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div><p>Next, it will ask you to set a password for <strong>MySQL root user</strong> (don&rsquo;t confuse it with <strong>the system root user</strong>). When you enter the password which is invisible for you, then re-enter the password again and Enter to continue.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Please set the password <span style="color:#66d9ef">for</span> root here.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>New password:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Re-enter new password:
+</span></span></code></pre></div><p>Because we have set up <strong>the VALIDATE PASSWORD component</strong>, it will estimate the strength of the password you just entered. And ask whether you wish to continue with that password. If you are satisfied with it</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Estimated strength of the password: <span style="color:#ae81ff">25</span> 
+</span></span><span style="display:flex;"><span>Do you wish to <span style="color:#66d9ef">continue</span> with the password provided?<span style="color:#f92672">(</span>Press y|Y <span style="color:#66d9ef">for</span> Yes, any other key <span style="color:#66d9ef">for</span> No<span style="color:#f92672">)</span> :
+</span></span></code></pre></div><p>==Conflicting&hellip;==</p>
+<h2 id="4-install-php">4. Install PHP</h2>
+<p>We have installed Apache to serve your site&rsquo;s assets such as store folders, files, images and site&rsquo;s configuration files. MySQL to store, handle and manage your site&rsquo;s data. Now, we will install PHP and PHP codes will be used combined with Apache and MySQL to handle the datas then display the dynamic content to the visitor.</p>
+<p>In addition, to PHP can work together with Apache and MySQL you need the Apache PHP module is <code>libapache2-mod-php</code> to enable Apache to handle PHP files, and the <code>php-mysql</code> package to allow PHP to communicate with MySQL databases.</p>
+<p>To install PHP and those above, run the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt install php libapache2-mod-php php-mysql
+</span></span></code></pre></div><p>It will ask whether you want to continue the process installation: <em>&ldquo;Do you want to continue? [Y/n]&rdquo;</em> - press <strong>y</strong> then <strong>Enter</strong> to agree to install.</p>
+<p>Once the installation is finished , you can confirm the version of PHP by the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>php -v
+</span></span></code></pre></div><p>The output look like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>PHP 7.4.3 <span style="color:#f92672">(</span>cli<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>built: Jun <span style="color:#ae81ff">13</span> <span style="color:#ae81ff">2022</span> 13:43:30<span style="color:#f92672">)</span> <span style="color:#f92672">(</span> NTS <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Copyright <span style="color:#f92672">(</span>c<span style="color:#f92672">)</span> The PHP Group
+</span></span><span style="display:flex;"><span>Zend Engine v3.4.0, Copyright <span style="color:#f92672">(</span>c<span style="color:#f92672">)</span> Zend Technologies
+</span></span><span style="display:flex;"><span>    with Zend OPcache v7.4.3, Copyright <span style="color:#f92672">(</span>c<span style="color:#f92672">)</span>, by Zend Technologies
+</span></span></code></pre></div><p>At this point, you have fully installed LAMP stack: Apache2 Web Server, MySQL database management system, and PHP scripting language. It&rsquo;s time to set up a new Apache Virtual Host to serve your new site. Let&rsquo;s go to the next step.</p>
+<h2 id="5-create-an-apache-virtual-host-for-your-site">5. Create an Apache Virtual Host for Your Site.</h2>
+<p>As we have covered in step 2 that Apache has <strong>a default virtual host</strong> with its own <strong>configuration file</strong> and <strong>root directory</strong>. But, instead of using and modifying the default Apache virtual host you should create a new virtual host with its own configuration file and root directory. And you can freely create additional virtual hosts for multiple websites on the same server, <strong>a virtual host serves for a website (serves for a domain)</strong>.</p>
+<p>To create <strong>a virtual host</strong> you need to create <strong>a configuration file</strong> for it in the <strong>/etc/apache2/sites-available</strong> directory, the same location of <strong>the default virtual host&rsquo;s configuration file</strong> is <strong>000-default.conf</strong> file. Then you specify the <code>DocumentRoot</code> directive inside <strong>the configuration file</strong> to <strong>the root directory</strong> of the virtual host. <strong>The root directory</strong> is the directory you need to create for <strong>the virtual host</strong> to hold assets of the site such as PHP script, HTML, CSS and Javascript files, images. And you must create <strong>the root directory</strong> in the <strong>/var/www</strong> directory, the same location of <strong>the default virtual host&rsquo;s root directory</strong> is <strong>/var/www/html</strong></p>
+<p>First, create <strong>a configuration file</strong> in Apache&rsquo;s <strong>sites-available</strong> directory. Assuming we have a domain is <strong>your_domain.com</strong> - replace with your own domain, we will name <strong>the configuration file</strong> is <strong>your_domain.conf</strong> - replace <strong>your_domain</strong> based on your domain. Here I use the command-line editor is <code>nano</code> to generate and edit <strong>the configuration file</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo nano /etc/apache2/sites-available/your_domain.conf
+</span></span></code></pre></div><p>The command above will create a new blank file, now copy and paste into it the following configuration code block - <strong>Note:</strong> replace <strong>your_domain.com</strong> in the line <code>ServerName your_domain.com</code> bellow by your own domain:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
+</span></span><span style="display:flex;"><span>    ServerName your_domain.com
+</span></span><span style="display:flex;"><span>    ServerAdmin webmaster@localhost
+</span></span><span style="display:flex;"><span>    DocumentRoot /var/www/your_domain
+</span></span><span style="display:flex;"><span>    ErrorLog <span style="color:#e6db74">${</span>APACHE_LOG_DIR<span style="color:#e6db74">}</span>/error.log
+</span></span><span style="display:flex;"><span>    CustomLog <span style="color:#e6db74">${</span>APACHE_LOG_DIR<span style="color:#e6db74">}</span>/access.log combined
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span></code></pre></div><p>Save and close the file when you&rsquo;re done. Because we have used <code>nano</code>, press <strong>Ctrl+X</strong>, then press <strong>y</strong> and <strong>Enter</strong>.</p>
+<blockquote>
+<p><strong>Important:</strong> If you use your own domain name, you must set up the DNS on your domain name registrar to point your domain to your server&rsquo;s public IP address. You can search this way on Google.</p>
+</blockquote>
+<p>You can see the <code>DocumentRoot</code> directive of <strong>the configuration file</strong> just created is specified to <strong>/var/www/your_domain</strong> directory. Now create <strong>your_domain</strong> directory in the <strong>/var/www</strong> directory as <strong>the root directory</strong> of <strong>your virtual host</strong>, use the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo mkdir /var/www/your_domain
+</span></span></code></pre></div><p>Next, assign <strong>ownership</strong> to the <strong>your_domain</strong> directory is your current system user by using the <code>$USER</code> environment variable:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo chown -R $USER:$USER /var/www/your_domain
+</span></span></code></pre></div><p>We have finished creating <strong>a new virtual host</strong> with its <strong>own configuration file</strong> and <strong>web root directory</strong>. And currently your Apache server has two virtual hosts: the default virtual host and the new virtual host you just created for <strong>your_domain.com</strong></p>
+<p>Now, you must enable the new virtual host that is just created by using <code>a2ensite</code> command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo a2ensite your_domain
+</span></span></code></pre></div><blockquote>
+<p><strong>Important:</strong> If you only want to test the virtual host that is just created and not using a domain name - by this way you only need use <strong>the server&rsquo;s public IP address</strong> to access your site. Now, you can remove or comment out the line of the <code>ServerName</code> directive in the configuration file, re-open the <strong>your_domain.conf</strong> file use <code>nano</code>:</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo nano /etc/apache2/sites-available/your_domain.conf
+</span></span></code></pre></div><p>Then remove the line of the <code>ServerName</code> directive, you can comment out by put the <strong>#</strong> character before this directive as bellow or remove the line of the <code>ServerName</code> directive:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#ServerName your_domain.com</span>
+</span></span><span style="display:flex;"><span>    ServerAdmin webmaster@localhost
+</span></span><span style="display:flex;"><span>    DocumentRoot /var/www/your_domain
+</span></span><span style="display:flex;"><span>    ErrorLog <span style="color:#e6db74">${</span>APACHE_LOG_DIR<span style="color:#e6db74">}</span>/error.log
+</span></span><span style="display:flex;"><span>    CustomLog <span style="color:#e6db74">${</span>APACHE_LOG_DIR<span style="color:#e6db74">}</span>/access.log combined
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span></code></pre></div><p>Now, you must disable the default virtual host by using <code>a2dissite</code> command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo a2dissite 000-default
+</span></span></code></pre></div><p>To checking whether your configuration you made doesn&rsquo;t contain syntax errors, run the command below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apache2ctl configtest
+</span></span></code></pre></div><p>Finally, reload Apache so these changes take effect:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo systemctl reload apache2
+</span></span></code></pre></div><p>Your new site is now active, and you can visit <strong>your_domain.com</strong> or the <strong>public IP address</strong> of your server (in the case not using a domain name). But before you do that, you need to create an <strong>index.php</strong> file inside the root <strong>/var/www/your_domain</strong> directory:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>nano /var/www/your_domain/index.php
+</span></span></code></pre></div><p>The command above will create a new blank file, copy and paste the PHP codes bellow into it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>&lt;?php
+</span></span><span style="display:flex;"><span>phpinfo<span style="color:#f92672">()</span>;
+</span></span></code></pre></div><p>Now, open your browser and access <strong>your_domain.com</strong> or <strong>your server&rsquo;s public IP address</strong>:</p>
+<pre tabindex="0"><code>http://yoour_domian.com or http://public_ip_address
+</code></pre><p>You&rsquo;ll see a page similar to this:</p>
+<p><img src="/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/install-php-on-ubuntu-20-04.png"
+	width="1077"
+	height="911"
+	srcset="/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/install-php-on-ubuntu-20-04_hu45fc3ee5cf7c87c5548e8a54c7676bc8_215990_480x0_resize_box_3.png 480w, /posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/install-php-on-ubuntu-20-04_hu45fc3ee5cf7c87c5548e8a54c7676bc8_215990_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="118"
+		data-flex-basis="283px"
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "296f80a520228186ba2f",
+        clientSecret: "e3a7ca73f49a53349d5b7367655e5705cb90d10c",
+        repo: "https:\/\/github.com\/clog95\/clog95-comments",
+        owner: "",
+        admin: [""],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2022 Clog95 - Hi Guys!
+    </section>
+    
+    <section class="powerby">
+        
+            Sending my dream to the feature! <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#1-set-up-a-firewall-with-ufw-on-your-server">1. Set up a Firewall with UFW on your server</a></li>
+    <li><a href="#2-install-apache-web-server">2. Install Apache Web Server</a></li>
+    <li><a href="#3-install-mysql">3. Install MySQL</a></li>
+    <li><a href="#4-install-php">4. Install PHP</a></li>
+    <li><a href="#5-create-an-apache-virtual-host-for-your-site">5. Create an Apache Virtual Host for Your Site.</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
