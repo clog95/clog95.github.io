@@ -4,6 +4,8 @@ description:
 date: "2022-09-10"
 slug: "html-introduction"
 image: "html-introduction.jpg"
+categories:
+    - Web Development
 ---
 
 In this article, I will be generalizing about **HTML** and **HTML5**, considering a simple **HTML document** and anatoming it. What are **HTML tags** and **HTML elements** and how to use them to embed an image, marking up text on your web page for the viewers to see when visiting your site. Finally you will be redirected when clicking on a link on a web page.

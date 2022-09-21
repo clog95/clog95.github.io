@@ -4,8 +4,9 @@ description:
 date: "2022-09-10"
 slug: "css-introduction"
 image: "css-introduction.jpg"
+categories:
+    - Web Development
 ---
-
 ## What is CSS?
 
 CSS stands for Cascading Style Sheets. Like HTML, CSS is not a programming language, it's not a markup language either. CSS is a style sheet language, it's used to style your web pages.
