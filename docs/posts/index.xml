@@ -12,7 +12,7 @@
         <pubDate>Tue, 20 Sep 2022 00:00:00 +0000</pubDate>
         
         <guid>https://clog95.com/posts/how-to-install-your-own-ghost-blog-on-google-cloud-platform/</guid>
-        <description>&lt;img src="https://clog95.com/posts/how-to-install-your-own-ghost-blog-on-google-cloud-platform/how-to-install-your-own-ghost-blog-on-google-cloud-platform.jpg" alt="Featured image of post How to install your own Ghost Blog on Google Cloud Platform" /&gt;&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+        <description>&lt;img src="https://clog95.com/how-to-install-your-own-ghost-blog-on-google-cloud-platform.jpg" alt="Featured image of post How to install your own Ghost Blog on Google Cloud Platform" /&gt;&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
 &lt;p&gt;In this tutorial I will show you how to self-hosting a Ghost Blog on Google Cloud Platform (GCP) by deploying a VM Instance install Ubuntu 18.04 LTS or 20.04 LTS server.&lt;/p&gt;
 &lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
 &lt;p&gt;To follow this tutorial, you will need:&lt;/p&gt;
