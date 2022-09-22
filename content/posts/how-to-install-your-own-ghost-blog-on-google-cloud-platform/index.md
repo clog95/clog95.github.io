@@ -3,7 +3,7 @@ title: "How to install your own Ghost Blog on Google Cloud Platform"
 description:
 date: "2022-09-20"
 slug: "how-to-install-your-own-ghost-blog-on-google-cloud-platform"
-image: "how-to-install-your-own-ghost-blog-on-google-cloud-platform.jpg"
+image: "install-ghost-blog-on-google-cloud-platform.jpg"
 categories:
     - Web Development
 ---
