@@ -6,7 +6,154 @@
         <description>Recent content in Posts on Clog95 - Hi Guys!</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Mon, 19 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://clog95.com/posts/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 20 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://clog95.com/posts/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>How to install your own Ghost Blog on Google Cloud Platform</title>
+        <link>https://clog95.com/posts/how-to-install-your-own-ghost-blog-on-google-cloud-platform/</link>
+        <pubDate>Tue, 20 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://clog95.com/posts/how-to-install-your-own-ghost-blog-on-google-cloud-platform/</guid>
+        <description>&lt;img src="https://clog95.com/posts/how-to-install-your-own-ghost-blog-on-google-cloud-platform/how-to-install-your-own-ghost-blog-on-google-cloud-platform.jpg" alt="Featured image of post How to install your own Ghost Blog on Google Cloud Platform" /&gt;&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;In this tutorial I will show you how to self-hosting a Ghost Blog on Google Cloud Platform (GCP) by deploying a VM Instance install Ubuntu 18.04 LTS or 20.04 LTS server.&lt;/p&gt;
+&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+&lt;p&gt;To follow this tutorial, you will need:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Your own valid GPC account.&lt;/li&gt;
+&lt;li&gt;A registered domain name.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note: Before getting started, you should set up a DNS A record from your domain, pointing to the server&amp;rsquo;s IP address on VM Instance. This must be done so that SSL can be automatically configured.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;1-create-a-vm-instance-and-set-up-a-static-ip&#34;&gt;1. Create a VM Instance and set up a static IP.&lt;/h2&gt;
+&lt;h3 id=&#34;create-a-vm-instance&#34;&gt;Create a VM Instance&lt;/h3&gt;
+&lt;p&gt;If you have owned a valid GPC account, now you can create a VM Instance with boot disk is Ubuntu 20.04 LTS or Ubuntu 18.04.&lt;/p&gt;
+&lt;p&gt;When your VM Instance is created, you can see the name and an External IP address. Because the External IP address is changed every time you startup, this will result in some troubles later so you need to set a fixed External IP address.&lt;/p&gt;
+&lt;h3 id=&#34;set-a-static-ip&#34;&gt;Set a static IP&lt;/h3&gt;
+&lt;p&gt;You can see in this video how to create a VM Instance and assign a static IP address for it:&lt;/p&gt;
+&lt;div class=&#34;video-wrapper&#34;&gt;
+    &lt;iframe loading=&#34;lazy&#34; 
+            src=&#34;https://www.youtube.com/embed/as_MiZen8RY&#34; 
+            allowfullscreen 
+            title=&#34;YouTube Video&#34;
+    &gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Finally, probably take a little time until your VM Instance is updated, backward your VM Instances page you can see your fixed External IP address corresponding, it not changed when you startup the server.&lt;/p&gt;
+&lt;h2 id=&#34;2-pointing-a-dns-a-record-from-your-own-domain-to-the-servers-static-ip-address&#34;&gt;2. Pointing a DNS A record from your own domain to the server&amp;rsquo;s static IP address.&lt;/h2&gt;
+&lt;p&gt;Because the source code and database of your Ghost blog will be installed on Ubuntu server that you have installed on your VM Instance. To users can see your site on the Internet via your domain name, you need a DNS A record of the domain that points to the static IP address on the server.&lt;/p&gt;
+&lt;p&gt;Here I used the domain service of Google, the processing is a little bit different from other domain services. You can search on Google the way that manages DNS and how to create and point a DNS A record to.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I go to &lt;a class=&#34;link&#34; href=&#34;https://domains.google.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;the Google Domains page&lt;/a&gt;, here you can see I have purchased some domains.&lt;/li&gt;
+&lt;li&gt;I will use the domain &lt;a class=&#34;link&#34; href=&#34;https://clog95.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;clog95.com&lt;/a&gt;, now click on it.&lt;/li&gt;
+&lt;li&gt;On the left side, I click on DNS to go into the DNS settings page.&lt;/li&gt;
+&lt;li&gt;On this DNS page, you can see a DNS A record exists, now I will remove it then create a new A record.&lt;/li&gt;
+&lt;li&gt;Here I create &lt;strong&gt;a record&lt;/strong&gt; with Type is &lt;strong&gt;A&lt;/strong&gt; and &lt;strong&gt;Data&lt;/strong&gt; is &lt;strong&gt;the static IP address&lt;/strong&gt; on the server, the &lt;strong&gt;Host name&lt;/strong&gt; and &lt;strong&gt;TTL&lt;/strong&gt; options leave as default. You can cover &lt;a class=&#34;link&#34; href=&#34;https://www.cloudflare.com/learning/dns/dns-records/dns-a-record/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;the DNS A record here&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-set-up-a-firewall-with-ufw-on-your-server&#34;&gt;3. Set up a Firewall with UFW on your server&lt;/h2&gt;
+&lt;p&gt;I will perform this processing via command line, so I need to connect to the server via SSH. Now click on SSH that corresponds with the server you need to connect to, if successful a Terminal will appear and you can start to take some commands.&lt;/p&gt;
+&lt;p&gt;First , update and upgrade packages on your server.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Checking the UFW status, default is inactive&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw status
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Let&amp;rsquo;s set the UFW to the default, deny all incoming and allow all outgoing connections.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw default deny incoming
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw default allow outgoing
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Lists the UFW apps&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw app list
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Allowing SSH connections, you need take this action to connect to the server via SSH later&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw allow OpenSSH
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Checking the UFW status again, it is still inactive&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw status
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Enabling UFW, with this command will appear a question that says: &lt;em&gt;&amp;ldquo;Command may disrupt existing ssh connections. Proceed with operation (y|n)?&amp;rdquo;&lt;/em&gt; - you press &lt;strong&gt;y&lt;/strong&gt; then &lt;strong&gt;Enter&lt;/strong&gt; to agree&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw enable
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Checking the UFW status again, now it is active and you can see OpenSSH is allowed&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw status
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, exits your SSH connect&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;exit
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;4-install-nginx&#34;&gt;4. Install Nginx&lt;/h2&gt;
+&lt;p&gt;Ghost uses Nginx for web server, now install it&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install nginx
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, let&amp;rsquo;s list the UFW apps and you can see &lt;strong&gt;Nginx Full&lt;/strong&gt; in this list&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; sudo ufw app list
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You need adjust the firewall to allow access to the web server, to do that simply allows HTTP and HTTPS connections by use UFW&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw allow &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Nginx Full&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Checking the UFW status, now you can see &lt;strong&gt;Nginx Full&lt;/strong&gt; is allowed&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw status
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;5-install-mysql&#34;&gt;5. Install Mysql&lt;/h2&gt;
+&lt;p&gt;Ghost uses Mysql server to manage your database, now install it:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install mysql-server
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now you need to login to MySQL to update the root user with its password due to Ghost-CLI will use it to access MySQL and create a database for your Ghost Blog. Take a few extra steps:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Login to MySQL&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo mysql
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Now update the password for your root user&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Replace 12345 with your chosen password&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ALTER USER &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;root&amp;#39;&lt;/span&gt;@&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt; IDENTIFIED WITH mysql_native_password BY &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;12345&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Exit MySQL&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;quit
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;6-install-nodejs&#34;&gt;6. Install Node.js&lt;/h2&gt;
+&lt;p&gt;Naturally Ghost Blog is written by Node.js, and so you need to install it:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Add the NodeSource APT repository for Node 16&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Install Node.js&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install nodejs
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Verify the version of Node.js&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# You should have version 16 of Node.js installed&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;node -v
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;7-install-ghost-cli&#34;&gt;7. Install Ghost-CLI&lt;/h2&gt;
+&lt;p&gt;Ghost-CLI is a command line tool to help you get Ghost installed and configured for use, quickly and easily:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo npm install ghost-cli@latest -g
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;8-install-ghost-blog&#34;&gt;8. Install Ghost Blog&lt;/h2&gt;
+&lt;p&gt;Once your server is correctly set up and Ghost-CLI is installed, it&amp;rsquo;s time to go to the end of the install process by taking some extra steps to install and run your Ghost Blog on the Internet environment.&lt;/p&gt;
+&lt;h3 id=&#34;create-a-directory&#34;&gt;Create a directory&lt;/h3&gt;
+&lt;p&gt;Following some instructions and commands below to create a directory for your Ghost Blog with its own user and permissions is proper setup:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Create directory: here I named clog95.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# You can change clog95 to whatever you like.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo mkdir /var/www/clog95
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Set directory owner of clog95 is current user.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo chown -R $USER:$USER /var/www/clog95
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Set the correct permissions for clog95 directory.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo chmod -R &lt;span style=&#34;color:#ae81ff&#34;&gt;775&lt;/span&gt; /var/www/clog95
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Go into the clog95 directory to install Ghost Blog.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd /var/www/clog95
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;run-the-install-process&#34;&gt;Run the install process:&lt;/h3&gt;
+&lt;p&gt;Now inside the directory you just created, run the following command to start the install process:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ghost install
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; After running the install command above, the CLI will ask you a number of questions to configure your site and you must answer it to run your site.&lt;/p&gt;
+&lt;h4 id=&#34;blog-url&#34;&gt;Blog URL&lt;/h4&gt;
+&lt;p&gt;Enter your domain name with HTTP or HTTPS protocol. Here I want Ghost-CLI is automatically set up SSL for me so I will use HTTPS protocol for my domain: &lt;a class=&#34;link&#34; href=&#34;https://clog95.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://clog95.com&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;mysql-hostname&#34;&gt;MySQL hostname&lt;/h4&gt;
+&lt;p&gt;Because we have installed MySQL on the same server with Ghost blog, so you just simply press Enter to use the default value is localhost.&lt;/p&gt;
+&lt;h4 id=&#34;mysql-username-and-password&#34;&gt;MySQL username and password&lt;/h4&gt;
+&lt;p&gt;In the install MySQL section Above, I have set up &lt;strong&gt;the root user&lt;/strong&gt; with its password is &lt;strong&gt;12345&lt;/strong&gt;. So I just need supply &lt;strong&gt;root&lt;/strong&gt; for MySQL username and &lt;strong&gt;12345&lt;/strong&gt; for password (pay attention: password is hidden when you press on keyboard)&lt;/p&gt;
+&lt;h4 id=&#34;ghost-database-name&#34;&gt;Ghost database name&lt;/h4&gt;
+&lt;p&gt;Enter the name of your database, Ghost-CLI will automatically set up for you. Here I name it is clog95 (change clog95 to one that that you want)&lt;/p&gt;
+&lt;h4 id=&#34;set-up-a-ghost-mysql-user&#34;&gt;Set up a ghost MySQL user?&lt;/h4&gt;
+&lt;p&gt;You just need press &lt;strong&gt;y&lt;/strong&gt; then &lt;strong&gt;Enter&lt;/strong&gt;, with this you have agreed to Ghost-CLI to create a custom MySQL user that can only access/edit your new Ghost database and nothing else.&lt;/p&gt;
+&lt;h4 id=&#34;set-up-nginx&#34;&gt;Set up Nginx&lt;/h4&gt;
+&lt;p&gt;Just need press &lt;strong&gt;y&lt;/strong&gt; then &lt;strong&gt;Enter&lt;/strong&gt;, Nginx will automatically set up your site to be viewed on the Internet environment.&lt;/p&gt;
+&lt;h4 id=&#34;set-up-ssl&#34;&gt;Set up SSL?&lt;/h4&gt;
+&lt;p&gt;If you want a SSL certificate for your domain and you have already pointed your domain to the static IP address of your server. Now just press &lt;strong&gt;y&lt;/strong&gt; then Enter, Ghost-CLI can automatically set up a SSL certificate for you using Let’s Encrypt.&lt;/p&gt;
+&lt;h4 id=&#34;enter-your-email&#34;&gt;Enter your email&lt;/h4&gt;
+&lt;p&gt;When you set up an SSL certificate, it will require an email address so that you can be kept informed about your SSL certificate such as expired and renewal.&lt;/p&gt;
+&lt;h4 id=&#34;set-up-systemd&#34;&gt;Set up systemd?&lt;/h4&gt;
+&lt;p&gt;Just press &lt;strong&gt;y&lt;/strong&gt; then &lt;strong&gt;Enter&lt;/strong&gt; to agree to set up systemd that is manager tool to keep Ghost blog running smoothly.&lt;/p&gt;
+&lt;h4 id=&#34;start-ghost&#34;&gt;Start ghost?&lt;/h4&gt;
+&lt;p&gt;Now, press &lt;strong&gt;y&lt;/strong&gt; then &lt;strong&gt;Enter&lt;/strong&gt; to make your site work.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>How To Install Linux, Apache, MySQL, PHP (LAMP) stack on Ubuntu 20.04</title>
         <link>https://clog95.com/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/</link>
         <pubDate>Mon, 19 Sep 2022 00:00:00 +0000</pubDate>
@@ -296,7 +443,7 @@ But you can only download 2 resource files per day, to unlimited downloads you n
 &gt;&lt;/p&gt;
 &lt;p&gt;Now, you can &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/drive/folders/1I9VgXOy-N2HqXy3vD51tT_TgS1aDvyLY?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;download the code and image sample here&lt;/a&gt; to follow and compare to this tutorial.&lt;/p&gt;
-&lt;h4 id=&#34;1-create-an-indexhtml-file&#34;&gt;1. Create an index.html file&lt;/h4&gt;
+&lt;h3 id=&#34;1-create-an-indexhtml-file&#34;&gt;1. Create an index.html file&lt;/h3&gt;
 &lt;p&gt;On your computer create a folder and name it &lt;strong&gt;my-site&lt;/strong&gt; then create an &lt;strong&gt;index.html&lt;/strong&gt; file inside &lt;strong&gt;my-site&lt;/strong&gt; folder.&lt;/p&gt;
 &lt;p&gt;Open &lt;strong&gt;index.html&lt;/strong&gt; file and then copy and paste the following codes into it.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
@@ -319,7 +466,7 @@ But you can only download 2 resource files per day, to unlimited downloads you n
 &lt;p&gt;You don&amp;rsquo;t need to worry about what it means, just use it and we will learn it later in this series.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;2-insert-a-div-element-with-a-class-name-is-container-to-wrap-your-web-contents&#34;&gt;2. Insert a &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; element with a class name is container to wrap your web contents&lt;/h4&gt;
+&lt;h3 id=&#34;2-insert-a-div-element-with-a-class-name-is-container-to-wrap-your-web-contents&#34;&gt;2. Insert a &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; element with a class name is container to wrap your web contents&lt;/h3&gt;
 &lt;p&gt;Create a  &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt;  element with a class named &lt;strong&gt;container&lt;/strong&gt; and then position it between &lt;code&gt;&amp;lt;body&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;/body&amp;gt;&lt;/code&gt; tags. Look like bellow:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;html&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;lang&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;en&amp;#34;&lt;/span&gt;&amp;gt;
@@ -337,7 +484,7 @@ But you can only download 2 resource files per day, to unlimited downloads you n
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;body&lt;/span&gt;&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;html&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;3-add-a-heading-h1-element-defines-the-main-heading&#34;&gt;3. Add a heading &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; element defines the main heading&lt;/h4&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-add-a-heading-h1-element-defines-the-main-heading&#34;&gt;3. Add a heading &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; element defines the main heading&lt;/h3&gt;
 &lt;p&gt;Insert &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; element with its content is &lt;strong&gt;CLog95&lt;/strong&gt; into between &lt;code&gt;&amp;lt;div class=&amp;quot;container&amp;quot;&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;/div&amp;gt;&lt;/code&gt;. Look like bellow:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;html&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;lang&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;en&amp;#34;&lt;/span&gt;&amp;gt;
@@ -356,7 +503,7 @@ But you can only download 2 resource files per day, to unlimited downloads you n
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;body&lt;/span&gt;&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;html&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;4-add-an-img-element-to-get-an-image&#34;&gt;4. Add an &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; element to get an image&lt;/h4&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-add-an-img-element-to-get-an-image&#34;&gt;4. Add an &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; element to get an image&lt;/h3&gt;
 &lt;p&gt;Download &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/1IMvdKo-FqEMBc9KjYi1QDgQ5Wv1Tk-gH/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;the image logo here&lt;/a&gt; and put it inside &lt;strong&gt;my-site&lt;/strong&gt; folder, the same folder with &lt;strong&gt;index.html&lt;/strong&gt; file.
 Insert &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; element with an image path is &lt;strong&gt;&amp;ldquo;clog95-logo.png&amp;rdquo;&lt;/strong&gt; for &lt;code&gt;src&lt;/code&gt; attribute inside container class and below &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; element. Look like bellow:&lt;/p&gt;
@@ -379,7 +526,7 @@ Insert &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; element with an image path i
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;body&lt;/span&gt;&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;html&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;5-add-the-rest-contents-for-the-web-page&#34;&gt;5. Add the rest contents for the web page&lt;/h4&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;5-add-the-rest-contents-for-the-web-page&#34;&gt;5. Add the rest contents for the web page&lt;/h3&gt;
 &lt;p&gt;I will insert a heading &lt;code&gt;&amp;lt;h2&amp;gt;&lt;/code&gt; element, two &lt;code&gt;&amp;lt;p&amp;gt;&lt;/code&gt; elements, an unordered list &lt;code&gt;&amp;lt;ul&amp;gt;&lt;/code&gt; with its contents. Look like bellow:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;html&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;lang&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;en&amp;#34;&lt;/span&gt;&amp;gt;
@@ -413,7 +560,7 @@ Insert &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; element with an image path i
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;body&lt;/span&gt;&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;html&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;6-write-css-to-style-for-the-web-page&#34;&gt;6. Write CSS to style for the web page.&lt;/h4&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;6-write-css-to-style-for-the-web-page&#34;&gt;6. Write CSS to style for the web page.&lt;/h3&gt;
 &lt;p&gt;Here I will write CSS into &lt;code&gt;index.html&lt;/code&gt; file, so I must insert &lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt; &lt;code&gt;&amp;lt;/style&amp;gt;&lt;/code&gt; tags between &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;/head&amp;gt;&lt;/code&gt; then write some CSS codes between &lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;/style&amp;gt;&lt;/code&gt;.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;html&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;lang&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;en&amp;#34;&lt;/span&gt;&amp;gt;
@@ -484,7 +631,7 @@ Insert &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; element with an image path i
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;style&lt;/span&gt;&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; the texts between /* and */ are only a way to write comments to note for you what CSS does so that you can remember what you do when you see it again a long time later.&lt;/p&gt;
-&lt;h4 id=&#34;7-combines-all-the-codes-into-indexhtml-file&#34;&gt;7. Combines all the codes into index.html file&lt;/h4&gt;
+&lt;h3 id=&#34;7-combines-all-the-codes-into-indexhtml-file&#34;&gt;7. Combines all the codes into index.html file&lt;/h3&gt;
 &lt;p&gt;I will put all CSS codes written between &lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt; &lt;code&gt;&amp;lt;/style&amp;gt;&lt;/code&gt; tags into between &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;/head&amp;gt;&lt;/code&gt;. Finally all the code inside &lt;code&gt;index.html&lt;/code&gt; file is look like bellow:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;html&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;lang&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;en&amp;#34;&lt;/span&gt;&amp;gt;
@@ -679,16 +826,16 @@ You can note &lt;code&gt;src&lt;/code&gt; and &lt;code&gt;alt&lt;/code&gt; that 
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;html&lt;/span&gt;&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;marking-up-text&#34;&gt;Marking up text&lt;/h2&gt;
 &lt;p&gt;HTML has some essential elements for marking up text that include marking up &lt;strong&gt;headings&lt;/strong&gt;, &lt;strong&gt;paragraphs&lt;/strong&gt;, &lt;strong&gt;lists&lt;/strong&gt;.&lt;/p&gt;
-&lt;h4 id=&#34;headings&#34;&gt;Headings&lt;/h4&gt;
+&lt;h3 id=&#34;headings&#34;&gt;Headings&lt;/h3&gt;
 &lt;p&gt;As you know, a book has the main title, chapter titles, and subtitles, an HTML document can too.&lt;/p&gt;
 &lt;p&gt;HTML has 6 heading levels from &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; to &lt;code&gt;&amp;lt;h6&amp;gt;&lt;/code&gt;, in order from largest heading( &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; ) to smallest heading( &lt;code&gt;&amp;lt;h6&amp;gt;&lt;/code&gt; ). In the example of the HTML document above I have used &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;h2&amp;gt;&lt;/code&gt;.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&amp;gt;UnityX&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt;&amp;gt;Learn web development&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;paragraphs&#34;&gt;Paragraphs&lt;/h4&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;paragraphs&#34;&gt;Paragraphs&lt;/h3&gt;
 &lt;p&gt;The &lt;code&gt;&amp;lt;p&amp;gt;&lt;/code&gt; elements are used for containing paragraphs of text, you&amp;rsquo;ll use these frequently when marking up regular text content. In the example above I have used two &lt;code&gt;&amp;lt;p&amp;gt;&lt;/code&gt; elements.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;Something you need to learn: HTML, CSS, Javascript, PHP&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;Here I will show you some basic HTML elements and how to use CSS to style for my web page.&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;lists&#34;&gt;Lists&lt;/h4&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;lists&#34;&gt;Lists&lt;/h3&gt;
 &lt;p&gt;A lot of the web&amp;rsquo;s content is lists and HTML has special elements for these. The most common list types are &lt;strong&gt;ordered&lt;/strong&gt; and &lt;strong&gt;unordered&lt;/strong&gt; lists:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Unordered lists&lt;/strong&gt; are lists where the order of the items doesn&amp;rsquo;t matter. Use a &lt;code&gt;&amp;lt;ul&amp;gt;&lt;/code&gt; element to wrap the unordered items inside.&lt;/li&gt;
@@ -734,7 +881,7 @@ You can note &lt;code&gt;src&lt;/code&gt; and &lt;code&gt;alt&lt;/code&gt; that 
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;body&lt;/span&gt;&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;html&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;links&#34;&gt;Links&lt;/h4&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;links&#34;&gt;Links&lt;/h3&gt;
 &lt;p&gt;Links are very important - they help you to go anywhere in the internet world! By clicking on the links, you can be redirected to the posts, download files, play an audio track, watch a video, go into other sites or somewhere else.&lt;/p&gt;
 &lt;p&gt;To add a link, we need to use a simple element - this is the &lt;code&gt;&amp;lt;a&amp;gt;&lt;/code&gt; element.&lt;/p&gt;
 &lt;p&gt;For example, I wanted that when I click on the CLog95 heading then I will be redirected to the home of my site at the address &lt;a class=&#34;link&#34; href=&#34;https://clog95.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;

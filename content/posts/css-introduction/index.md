@@ -7,6 +7,7 @@ image: "css-introduction.jpg"
 categories:
     - Web Development
 ---
+
 ## What is CSS?
 
 CSS stands for Cascading Style Sheets. Like HTML, CSS is not a programming language, it's not a markup language either. CSS is a style sheet language, it's used to style your web pages.
@@ -33,7 +34,7 @@ CSS is used to define styles for your web pages, including design, layout and va
 
  With CSS you can decorate your website with colors, fonts, images.. to make it more interesting.
 
- ## Consider and Anatomy a Simple Instance
+## Consider and Anatomy a Simple Instance
 
  I will show you how to create a simple web page with cyan background, a logo image, 2 heading, 2 paragraphs and an unordered list. The sample page as below:
 
@@ -41,7 +42,7 @@ CSS is used to define styles for your web pages, including design, layout and va
 
  Now, you can [download the code and image sample here](https://drive.google.com/drive/folders/1I9VgXOy-N2HqXy3vD51tT_TgS1aDvyLY?usp=sharing) to follow and compare to this tutorial.
 
- #### 1. Create an index.html file
+### 1. Create an index.html file
 
  On your computer create a folder and name it **my-site** then create an **index.html** file inside **my-site** folder.
 
@@ -65,7 +66,7 @@ CSS is used to define styles for your web pages, including design, layout and va
 
 - You don't need to worry about what it means, just use it and we will learn it later in this series.
 
-#### 2. Insert a `<div>` element with a class name is container to wrap your web contents
+### 2. Insert a `<div>` element with a class name is container to wrap your web contents
 
 Create a  `<div>`  element with a class named **container** and then position it between `<body>` and `</body>` tags. Look like bellow:
 
@@ -88,7 +89,7 @@ Create a  `<div>`  element with a class named **container** and then position it
 </html>
 ```
 
-#### 3. Add a heading `<h1>` element defines the main heading
+### 3. Add a heading `<h1>` element defines the main heading
 
 Insert `<h1>` element with its content is **CLog95** into between `<div class="container">` and `</div>`. Look like bellow:
 
@@ -112,7 +113,7 @@ Insert `<h1>` element with its content is **CLog95** into between `<div class="c
 </html>
 ```
 
-#### 4. Add an `<img>` element to get an image
+### 4. Add an `<img>` element to get an image
 Download [the image logo here](https://drive.google.com/file/d/1IMvdKo-FqEMBc9KjYi1QDgQ5Wv1Tk-gH/view?usp=sharing) and put it inside **my-site** folder, the same folder with **index.html** file.
 Insert `<img>` element with an image path is **"clog95-logo.png"** for `src` attribute inside container class and below `<h1>` element. Look like bellow:
 
@@ -138,7 +139,7 @@ Insert `<img>` element with an image path is **"clog95-logo.png"** for `src` att
 </html>
 ```
 
-#### 5. Add the rest contents for the web page
+### 5. Add the rest contents for the web page
 
 I will insert a heading `<h2>` element, two `<p>` elements, an unordered list `<ul>` with its contents. Look like bellow:
 
@@ -177,7 +178,7 @@ I will insert a heading `<h2>` element, two `<p>` elements, an unordered list `<
 </html>
 ```
 
-#### 6. Write CSS to style for the web page.
+### 6. Write CSS to style for the web page.
 
 Here I will write CSS into `index.html` file, so I must insert `<style>` `</style>` tags between `<head>` and `</head>` then write some CSS codes between `<style>` and `</style>`.
 
@@ -271,7 +272,7 @@ Here I will write CSS into `index.html` file, so I must insert `<style>` `</styl
 
 **Note:** the texts between /* and */ are only a way to write comments to note for you what CSS does so that you can remember what you do when you see it again a long time later.
 
-#### 7. Combines all the codes into index.html file
+### 7. Combines all the codes into index.html file
 
 I will put all CSS codes written between `<style>` `</style>` tags into between `<head>` and `</head>`. Finally all the code inside `index.html` file is look like bellow:
 

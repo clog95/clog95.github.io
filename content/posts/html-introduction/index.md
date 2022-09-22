@@ -149,7 +149,7 @@ Now, I will embed the image below the `<h1>` element of the HTML document:
 
 HTML has some essential elements for marking up text that include marking up **headings**, **paragraphs**, **lists**.
 
-#### Headings
+### Headings
 
 As you know, a book has the main title, chapter titles, and subtitles, an HTML document can too.
 
@@ -160,7 +160,7 @@ HTML has 6 heading levels from `<h1>` to `<h6>`, in order from largest heading( 
 <h2>Learn web development</h2>
 ```
 
-#### Paragraphs
+### Paragraphs
 
 The `<p>` elements are used for containing paragraphs of text, you'll use these frequently when marking up regular text content. In the example above I have used two `<p>` elements.
 
@@ -169,7 +169,7 @@ The `<p>` elements are used for containing paragraphs of text, you'll use these 
 <p>Here I will show you some basic HTML elements and how to use CSS to style for my web page.</p>
 ```
 
-#### Lists
+### Lists
 
 A lot of the web's content is lists and HTML has special elements for these. The most common list types are **ordered** and **unordered** lists:
 
@@ -227,7 +227,7 @@ Now, our HTML document will look like this:
 </html>
 ```
 
-#### Links
+### Links
 
 Links are very important - they help you to go anywhere in the internet world! By clicking on the links, you can be redirected to the posts, download files, play an audio track, watch a video, go into other sites or somewhere else.
 

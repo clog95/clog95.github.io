@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://clog95.com/</loc>
-    <lastmod>2022-09-19T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vn"
@@ -26,7 +26,7 @@
                 />
   </url><url>
     <loc>https://clog95.com/categories/</loc>
-    <lastmod>2022-09-19T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vn"
@@ -48,11 +48,11 @@
                 href="https://clog95.com/categories/"
                 />
   </url><url>
-    <loc>https://clog95.com/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/</loc>
-    <lastmod>2022-09-19T00:00:00+00:00</lastmod>
+    <loc>https://clog95.com/posts/how-to-install-your-own-ghost-blog-on-google-cloud-platform/</loc>
+    <lastmod>2022-09-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://clog95.com/posts/</loc>
-    <lastmod>2022-09-19T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
@@ -65,6 +65,9 @@
                 />
   </url><url>
     <loc>https://clog95.com/categories/web-development/</loc>
+    <lastmod>2022-09-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://clog95.com/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/</loc>
     <lastmod>2022-09-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://clog95.com/about/</loc>
