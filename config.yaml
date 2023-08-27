@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 baseurl: https://clog95.com/
+=======
+baseurl: https://clog95.github.io/
+>>>>>>> 0b6365c (Test 1)
 languageCode: en-us
 paginate: 5
 title: Clog95
