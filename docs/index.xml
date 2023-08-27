@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Clog95 - Hi Guys!</title>
-        <link>https://clog95.com/</link>
+        <link>https://clog95.github.io/</link>
         <description>Recent content on Clog95 - Hi Guys!</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
-        <lastBuildDate>Tue, 20 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://clog95.com/index.xml" rel="self" type="application/rss+xml" /><item>
+        <language>en</language>
+        <lastBuildDate>Tue, 20 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://clog95.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>How to install your own Ghost Blog on Google Cloud Platform</title>
-        <link>https://clog95.com/posts/how-to-install-your-own-ghost-blog-on-google-cloud-platform/</link>
+        <link>https://clog95.github.io/posts/how-to-install-your-own-ghost-blog-on-google-cloud-platform/</link>
         <pubDate>Tue, 20 Sep 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://clog95.com/posts/how-to-install-your-own-ghost-blog-on-google-cloud-platform/</guid>
-        <description>&lt;img src="https://clog95.com/posts/how-to-install-your-own-ghost-blog-on-google-cloud-platform/install-ghost-blog-on-google-cloud-platform.jpg" alt="Featured image of post How to install your own Ghost Blog on Google Cloud Platform" /&gt;&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+        <guid>https://clog95.github.io/posts/how-to-install-your-own-ghost-blog-on-google-cloud-platform/</guid>
+        <description>&lt;img src="https://clog95.github.io/posts/how-to-install-your-own-ghost-blog-on-google-cloud-platform/install-ghost-blog-on-google-cloud-platform.jpg" alt="Featured image of post How to install your own Ghost Blog on Google Cloud Platform" /&gt;&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
 &lt;p&gt;In this tutorial I will show you how to self-hosting a Ghost Blog on Google Cloud Platform (GCP) by deploying a VM Instance install Ubuntu 18.04 LTS or 20.04 LTS server.&lt;/p&gt;
 &lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
 &lt;p&gt;To follow this tutorial, you will need:&lt;/p&gt;
@@ -155,11 +155,11 @@
         </item>
         <item>
         <title>How To Install Linux, Apache, MySQL, PHP (LAMP) stack on Ubuntu 20.04</title>
-        <link>https://clog95.com/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/</link>
+        <link>https://clog95.github.io/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/</link>
         <pubDate>Mon, 19 Sep 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://clog95.com/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/</guid>
-        <description>&lt;img src="https://clog95.com/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/install-lamp-stack-on-ubuntu-20-04.jpg" alt="Featured image of post How To Install Linux, Apache, MySQL, PHP (LAMP) stack on Ubuntu 20.04" /&gt;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+        <guid>https://clog95.github.io/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/</guid>
+        <description>&lt;img src="https://clog95.github.io/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/install-lamp-stack-on-ubuntu-20-04.jpg" alt="Featured image of post How To Install Linux, Apache, MySQL, PHP (LAMP) stack on Ubuntu 20.04" /&gt;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;A LAMP stack is a group of four open-source software that form the foundation of building and running high performance web servers to host dynamic websites and web applications. This term is an acronym for Linux (the operating system ), Apache (the web server), MySQL (the database), PHP/Perl/Python (the programming language). Some popular LAMP applications are Wiki&amp;rsquo;s, the majority of modern Content Management Systems (CMS such as WordPress, Joomla, Drupal, and Magento require a LAMP stack to work).&lt;/p&gt;
 &lt;p&gt;To build and run a website with PHP or you use some framework of PHP such as Codeigniter or Laravel you need a LAMP stack for your web server to store data and deliver web content through the internet.&lt;/p&gt;
 &lt;p&gt;Therefore, in this guide, I will show you how to set up a LAMP stack on an Ubuntu 20.04 server for building and running the PHP applications.&lt;/p&gt;
@@ -224,10 +224,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To check whether you have installed Apache web server successfully, now visit &lt;strong&gt;your server&amp;rsquo;s public IP address&lt;/strong&gt; in your web browser. Replace the IP address below ( &lt;strong&gt;192.0.2.1&lt;/strong&gt; ) by &lt;strong&gt;your own server&amp;rsquo;s public IP&lt;/strong&gt;:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;http://192.0.2.1
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You should see the default Apache web page as shown below:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://clog95.com/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/the-default-apache-web-page.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://clog95.github.io/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/the-default-apache-web-page.png&#34;
 	width=&#34;745&#34;
 	height=&#34;1034&#34;
-	srcset=&#34;https://clog95.com/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/the-default-apache-web-page_hue68c69bad23e98837a88ee92a6ff4ee0_571218_480x0_resize_box_3.png 480w, https://clog95.com/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/the-default-apache-web-page_hue68c69bad23e98837a88ee92a6ff4ee0_571218_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://clog95.github.io/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/the-default-apache-web-page_hue68c69bad23e98837a88ee92a6ff4ee0_571218_480x0_resize_box_3.png 480w, https://clog95.github.io/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/the-default-apache-web-page_hue68c69bad23e98837a88ee92a6ff4ee0_571218_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -352,10 +352,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, open your browser and access &lt;strong&gt;your_domain.com&lt;/strong&gt; or &lt;strong&gt;your server&amp;rsquo;s public IP address&lt;/strong&gt;:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;http://yoour_domian.com or http://public_ip_address
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You&amp;rsquo;ll see a page similar to this:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://clog95.com/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/install-php-on-ubuntu-20-04.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://clog95.github.io/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/install-php-on-ubuntu-20-04.png&#34;
 	width=&#34;1077&#34;
 	height=&#34;911&#34;
-	srcset=&#34;https://clog95.com/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/install-php-on-ubuntu-20-04_hu45fc3ee5cf7c87c5548e8a54c7676bc8_215990_480x0_resize_box_3.png 480w, https://clog95.com/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/install-php-on-ubuntu-20-04_hu45fc3ee5cf7c87c5548e8a54c7676bc8_215990_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://clog95.github.io/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/install-php-on-ubuntu-20-04_hu45fc3ee5cf7c87c5548e8a54c7676bc8_215990_480x0_resize_box_3.png 480w, https://clog95.github.io/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/install-php-on-ubuntu-20-04_hu45fc3ee5cf7c87c5548e8a54c7676bc8_215990_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -368,10 +368,10 @@
         </item>
         <item>
         <title>About</title>
-        <link>https://clog95.com/about/</link>
+        <link>https://clog95.github.io/about/</link>
         <pubDate>Wed, 14 Sep 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://clog95.com/about/</guid>
+        <guid>https://clog95.github.io/about/</guid>
         <description>&lt;p&gt;Hi guys! Welcome to my site.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;m Cương, from Việt Nam. I am working  as a web and graphic designer.&lt;/p&gt;
 &lt;p&gt;This site is a place where I write and share my knowledge, experience in my life.&lt;/p&gt;
@@ -386,20 +386,20 @@
         </item>
         <item>
         <title>Png Trees Graphic Resources Variety Is Available for Download</title>
-        <link>https://clog95.com/posts/png-trees-graphic-resources-variety-is-available-for-download/</link>
+        <link>https://clog95.github.io/posts/png-trees-graphic-resources-variety-is-available-for-download/</link>
         <pubDate>Sun, 11 Sep 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://clog95.com/posts/png-trees-graphic-resources-variety-is-available-for-download/</guid>
-        <description>&lt;img src="https://clog95.com/posts/png-trees-graphic-resources-variety-is-available-for-download/png-trees-graphic-resources.jpg" alt="Featured image of post Png Trees Graphic Resources Variety Is Available for Download" /&gt;&lt;p&gt;If you are a designer that probably needs a graphic resource to download, this will help you save a lot of time. You can search on Google and see many sites for downloading graphic resources. But, in this article, I will introduce to you the &lt;a class=&#34;link&#34; href=&#34;https://pngtree.com/?sce=af&amp;amp;id=12548&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <guid>https://clog95.github.io/posts/png-trees-graphic-resources-variety-is-available-for-download/</guid>
+        <description>&lt;img src="https://clog95.github.io/posts/png-trees-graphic-resources-variety-is-available-for-download/png-trees-graphic-resources.jpg" alt="Featured image of post Png Trees Graphic Resources Variety Is Available for Download" /&gt;&lt;p&gt;If you are a designer that probably needs a graphic resource to download, this will help you save a lot of time. You can search on Google and see many sites for downloading graphic resources. But, in this article, I will introduce to you the &lt;a class=&#34;link&#34; href=&#34;https://pngtree.com/?sce=af&amp;amp;id=12548&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;pngtree.com&lt;/a&gt; site that I have used until now.&lt;/p&gt;
 &lt;p&gt;Now you can visit the site at &lt;a class=&#34;link&#34; href=&#34;https://pngtree.com/?sce=af&amp;amp;id=12548&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;pngtree.com&lt;/a&gt; address, look at the menu, scroll down the site. Here, the site produces a variety of graphic resources such as PNG Images, Backgrounds, Vectors, Icons, Logos, Wallpapers, Powerpoint templates and more.
 But you can only download 2 resource files per day, to unlimited downloads you need to upgrade your account. Now, let&amp;rsquo;s see some resources on this site:&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pngtree.com/?sce=af&amp;amp;id=12548&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;&lt;img src=&#34;https://clog95.com/posts/png-trees-graphic-resources-variety-is-available-for-download/png-trees-graphic-resources-variety.jpg&#34;
+    &gt;&lt;img src=&#34;https://clog95.github.io/posts/png-trees-graphic-resources-variety-is-available-for-download/png-trees-graphic-resources-variety.jpg&#34;
 	width=&#34;1920&#34;
 	height=&#34;1040&#34;
-	srcset=&#34;https://clog95.com/posts/png-trees-graphic-resources-variety-is-available-for-download/png-trees-graphic-resources-variety_hu70fad3380b9d57d5747582fce1f8225f_116214_480x0_resize_q75_box.jpg 480w, https://clog95.com/posts/png-trees-graphic-resources-variety-is-available-for-download/png-trees-graphic-resources-variety_hu70fad3380b9d57d5747582fce1f8225f_116214_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://clog95.github.io/posts/png-trees-graphic-resources-variety-is-available-for-download/png-trees-graphic-resources-variety_hu70fad3380b9d57d5747582fce1f8225f_116214_480x0_resize_q75_box.jpg 480w, https://clog95.github.io/posts/png-trees-graphic-resources-variety-is-available-for-download/png-trees-graphic-resources-variety_hu70fad3380b9d57d5747582fce1f8225f_116214_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -412,11 +412,11 @@ But you can only download 2 resource files per day, to unlimited downloads you n
         </item>
         <item>
         <title>CSS Introduction</title>
-        <link>https://clog95.com/posts/css-introduction/</link>
+        <link>https://clog95.github.io/posts/css-introduction/</link>
         <pubDate>Sat, 10 Sep 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://clog95.com/posts/css-introduction/</guid>
-        <description>&lt;img src="https://clog95.com/posts/css-introduction/css-introduction.jpg" alt="Featured image of post CSS Introduction" /&gt;&lt;h2 id=&#34;what-is-css&#34;&gt;What is CSS?&lt;/h2&gt;
+        <guid>https://clog95.github.io/posts/css-introduction/</guid>
+        <description>&lt;img src="https://clog95.github.io/posts/css-introduction/css-introduction.jpg" alt="Featured image of post CSS Introduction" /&gt;&lt;h2 id=&#34;what-is-css&#34;&gt;What is CSS?&lt;/h2&gt;
 &lt;p&gt;CSS stands for Cascading Style Sheets. Like HTML, CSS is not a programming language, it&amp;rsquo;s not a markup language either. CSS is a style sheet language, it&amp;rsquo;s used to style your web pages.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;CSS describes how HTML elements are to be displayed on screen, paper, or in other media.&lt;/li&gt;
@@ -428,10 +428,10 @@ But you can only download 2 resource files per day, to unlimited downloads you n
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; if you don&amp;rsquo;t know what HTML is, I suggest you pause here to read &lt;a class=&#34;link&#34; href=&#34;https://clog95.com/posts/html-introduction/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;the HTML Introduction&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Here I will show you a HTML page displayed with four different styles. Click on the Style 1, Style 2, Style 3, Style 4 to see different styles and click on the No style to see only the HTML page without CSS.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://clog95.com/posts/css-introduction/css-demo-using-css-to-style-a-html-page.gif&#34;
+&lt;p&gt;&lt;img src=&#34;https://clog95.github.io/posts/css-introduction/css-demo-using-css-to-style-a-html-page.gif&#34;
 	width=&#34;1468&#34;
 	height=&#34;794&#34;
-	srcset=&#34;https://clog95.com/posts/css-introduction/css-demo-using-css-to-style-a-html-page_hu36cad03489025e428b13828ba6bf627e_539381_480x0_resize_box.gif 480w, https://clog95.com/posts/css-introduction/css-demo-using-css-to-style-a-html-page_hu36cad03489025e428b13828ba6bf627e_539381_1024x0_resize_box.gif 1024w&#34;
+	srcset=&#34;https://clog95.github.io/posts/css-introduction/css-demo-using-css-to-style-a-html-page_hu36cad03489025e428b13828ba6bf627e_539381_480x0_resize_box_1.gif 480w, https://clog95.github.io/posts/css-introduction/css-demo-using-css-to-style-a-html-page_hu36cad03489025e428b13828ba6bf627e_539381_1024x0_resize_box_1.gif 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -447,10 +447,10 @@ But you can only download 2 resource files per day, to unlimited downloads you n
 &lt;p&gt;With CSS you can decorate your website with colors, fonts, images.. to make it more interesting.&lt;/p&gt;
 &lt;h2 id=&#34;consider-and-anatomy-a-simple-instance&#34;&gt;Consider and Anatomy a Simple Instance&lt;/h2&gt;
 &lt;p&gt;I will show you how to create a simple web page with cyan background, a logo image, 2 heading, 2 paragraphs and an unordered list. The sample page as below:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://clog95.com/posts/css-introduction/css-introduction-a-simple-web-page.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://clog95.github.io/posts/css-introduction/css-introduction-a-simple-web-page.png&#34;
 	width=&#34;1172&#34;
 	height=&#34;469&#34;
-	srcset=&#34;https://clog95.com/posts/css-introduction/css-introduction-a-simple-web-page_hud0523c86060a4e26f10ef60f93ca01b6_28003_480x0_resize_box_3.png 480w, https://clog95.com/posts/css-introduction/css-introduction-a-simple-web-page_hud0523c86060a4e26f10ef60f93ca01b6_28003_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://clog95.github.io/posts/css-introduction/css-introduction-a-simple-web-page_hud0523c86060a4e26f10ef60f93ca01b6_28003_480x0_resize_box_3.png 480w, https://clog95.github.io/posts/css-introduction/css-introduction-a-simple-web-page_hud0523c86060a4e26f10ef60f93ca01b6_28003_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -715,11 +715,11 @@ Insert &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; element with an image path i
         </item>
         <item>
         <title>HTML Introduction</title>
-        <link>https://clog95.com/posts/html-introduction/</link>
+        <link>https://clog95.github.io/posts/html-introduction/</link>
         <pubDate>Sat, 10 Sep 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://clog95.com/posts/html-introduction/</guid>
-        <description>&lt;img src="https://clog95.com/posts/html-introduction/html-introduction.jpg" alt="Featured image of post HTML Introduction" /&gt;&lt;p&gt;In this article, I will be generalizing about &lt;strong&gt;HTML&lt;/strong&gt; and &lt;strong&gt;HTML5&lt;/strong&gt;, considering a simple &lt;strong&gt;HTML document&lt;/strong&gt; and anatoming it. What are &lt;strong&gt;HTML tags&lt;/strong&gt; and &lt;strong&gt;HTML elements&lt;/strong&gt; and how to use them to embed an image, marking up text on your web page for the viewers to see when visiting your site. Finally you will be redirected when clicking on a link on a web page.&lt;/p&gt;
+        <guid>https://clog95.github.io/posts/html-introduction/</guid>
+        <description>&lt;img src="https://clog95.github.io/posts/html-introduction/html-introduction.jpg" alt="Featured image of post HTML Introduction" /&gt;&lt;p&gt;In this article, I will be generalizing about &lt;strong&gt;HTML&lt;/strong&gt; and &lt;strong&gt;HTML5&lt;/strong&gt;, considering a simple &lt;strong&gt;HTML document&lt;/strong&gt; and anatoming it. What are &lt;strong&gt;HTML tags&lt;/strong&gt; and &lt;strong&gt;HTML elements&lt;/strong&gt; and how to use them to embed an image, marking up text on your web page for the viewers to see when visiting your site. Finally you will be redirected when clicking on a link on a web page.&lt;/p&gt;
 &lt;h2 id=&#34;what-is-html&#34;&gt;What is HTML?&lt;/h2&gt;
 &lt;p&gt;HTML stands for Hyper Text Markup Language, it’s not a programming language, it’s a markup language for creating Web pages.&lt;/p&gt;
 &lt;ul&gt;
@@ -958,11 +958,11 @@ You can note &lt;code&gt;src&lt;/code&gt; and &lt;code&gt;alt&lt;/code&gt; that 
         </item>
         <item>
         <title>What Is a Domain Name and How Does It Work</title>
-        <link>https://clog95.com/posts/what-is-a-domain-name-and-how-does-it-work/</link>
+        <link>https://clog95.github.io/posts/what-is-a-domain-name-and-how-does-it-work/</link>
         <pubDate>Tue, 30 Aug 2022 23:16:56 +0700</pubDate>
         
-        <guid>https://clog95.com/posts/what-is-a-domain-name-and-how-does-it-work/</guid>
-        <description>&lt;img src="https://clog95.com/posts/what-is-a-domain-name-and-how-does-it-work/what-is-a-domain-name-and-how-does-it-work.jpg" alt="Featured image of post What Is a Domain Name and How Does It Work" /&gt;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+        <guid>https://clog95.github.io/posts/what-is-a-domain-name-and-how-does-it-work/</guid>
+        <description>&lt;img src="https://clog95.github.io/posts/what-is-a-domain-name-and-how-does-it-work/what-is-a-domain-name-and-how-does-it-work.jpg" alt="Featured image of post What Is a Domain Name and How Does It Work" /&gt;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;Domain names are a key part of the Internet infrastructure. They provide a human-readable address for any web server available on the Internet.&lt;/p&gt;
 &lt;p&gt;A domain name is an address of your website that people can type into our browser&amp;rsquo;s address bar to visit your website (Like you access the &lt;a class=&#34;link&#34; href=&#34;https://clog95.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;clog95.com&lt;/a&gt; site to see this content).&lt;/p&gt;
@@ -1042,19 +1042,19 @@ You can note &lt;code&gt;src&lt;/code&gt; and &lt;code&gt;alt&lt;/code&gt; that 
         </item>
         <item>
         <title>Archives</title>
-        <link>https://clog95.com/archives/</link>
+        <link>https://clog95.github.io/archives/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://clog95.com/archives/</guid>
+        <guid>https://clog95.github.io/archives/</guid>
         <description></description>
         </item>
         <item>
         <title>Markdown Syntax Guide</title>
-        <link>https://clog95.com/posts/markdown-syntax/</link>
+        <link>https://clog95.github.io/posts/markdown-syntax/</link>
         <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://clog95.com/posts/markdown-syntax/</guid>
-        <description>&lt;img src="https://clog95.com/posts/markdown-syntax/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg" alt="Featured image of post Markdown Syntax Guide" /&gt;&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;
+        <guid>https://clog95.github.io/posts/markdown-syntax/</guid>
+        <description>&lt;img src="https://clog95.github.io/posts/markdown-syntax/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg" alt="Featured image of post Markdown Syntax Guide" /&gt;&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;
 &lt;h2 id=&#34;headings&#34;&gt;Headings&lt;/h2&gt;
 &lt;p&gt;The following HTML &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt;—&lt;code&gt;&amp;lt;h6&amp;gt;&lt;/code&gt; elements represent six levels of section headings. &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; is the highest section level while &lt;code&gt;&amp;lt;h6&amp;gt;&lt;/code&gt; is the lowest.&lt;/p&gt;
 &lt;h1 id=&#34;h1&#34;&gt;H1&lt;/h1&gt;
@@ -1237,10 +1237,10 @@ You can note &lt;code&gt;src&lt;/code&gt; and &lt;code&gt;alt&lt;/code&gt; that 
         </item>
         <item>
         <title>Rich Content</title>
-        <link>https://clog95.com/posts/rich-content/</link>
+        <link>https://clog95.github.io/posts/rich-content/</link>
         <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://clog95.com/posts/rich-content/</guid>
+        <guid>https://clog95.github.io/posts/rich-content/</guid>
         <description>&lt;p&gt;Hugo ships with several &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/content-management/shortcodes/#use-hugo-s-built-in-shortcodes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Built-in Shortcodes&lt;/a&gt; for rich content, along with a &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/about/hugo-and-gdpr/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Privacy Config&lt;/a&gt; and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.&lt;/p&gt;
@@ -1360,11 +1360,11 @@ You can note &lt;code&gt;src&lt;/code&gt; and &lt;code&gt;alt&lt;/code&gt; that 
         </item>
         <item>
         <title>Placeholder Text</title>
-        <link>https://clog95.com/posts/placeholder-text/</link>
+        <link>https://clog95.github.io/posts/placeholder-text/</link>
         <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://clog95.com/posts/placeholder-text/</guid>
-        <description>&lt;img src="https://clog95.com/posts/placeholder-text/matt-le-SJSpo9hQf7s-unsplash.jpg" alt="Featured image of post Placeholder Text" /&gt;&lt;p&gt;Lorem est tota propiore conpellat pectoribus de pectora summo.&lt;/p&gt;
+        <guid>https://clog95.github.io/posts/placeholder-text/</guid>
+        <description>&lt;img src="https://clog95.github.io/posts/placeholder-text/matt-le-SJSpo9hQf7s-unsplash.jpg" alt="Featured image of post Placeholder Text" /&gt;&lt;p&gt;Lorem est tota propiore conpellat pectoribus de pectora summo.&lt;/p&gt;
 &lt;p&gt;Redit teque digerit hominumque toris verebor lumina non cervice subde tollit usus habet Arctonque, furores quas nec ferunt. Quoque montibus nunc caluere tempus inhospita parcite confusaque translucet patri vestro qui optatis lumine cognoscere flos nubis! Fronde ipsamque patulos Dryopen deorum.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Exierant elisi ambit vivere dedere&lt;/li&gt;
@@ -1391,10 +1391,10 @@ You can note &lt;code&gt;src&lt;/code&gt; and &lt;code&gt;alt&lt;/code&gt; that 
         </item>
         <item>
         <title>Math Typesetting</title>
-        <link>https://clog95.com/posts/math-typesetting/</link>
+        <link>https://clog95.github.io/posts/math-typesetting/</link>
         <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://clog95.com/posts/math-typesetting/</guid>
+        <guid>https://clog95.github.io/posts/math-typesetting/</guid>
         <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;
 &lt;p&gt;In this example we will be using &lt;a class=&#34;link&#34; href=&#34;https://katex.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;KaTeX&lt;/a&gt;&lt;/p&gt;
@@ -1418,16 +1418,16 @@ You can note &lt;code&gt;src&lt;/code&gt; and &lt;code&gt;alt&lt;/code&gt; that 
 
 &lt;p&gt;Block math:
 $$
-\varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } } 
+\varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }
 $$&lt;/p&gt;</description>
         </item>
         <item>
         <title>Emoji Support</title>
-        <link>https://clog95.com/posts/emoji-support/</link>
+        <link>https://clog95.github.io/posts/emoji-support/</link>
         <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://clog95.com/posts/emoji-support/</guid>
-        <description>&lt;img src="https://clog95.com/posts/emoji-support/the-creative-exchange-d2zvqp3fpro-unsplash.jpg" alt="Featured image of post Emoji Support" /&gt;&lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;
+        <guid>https://clog95.github.io/posts/emoji-support/</guid>
+        <description>&lt;img src="https://clog95.github.io/posts/emoji-support/the-creative-exchange-d2zvqp3fpro-unsplash.jpg" alt="Featured image of post Emoji Support" /&gt;&lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;
 &lt;p&gt;The &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/functions/emojify/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;&lt;code&gt;emojify&lt;/code&gt;&lt;/a&gt; function can be called directly in templates or &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/templates/shortcode-templates/#inline-shortcodes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Inline Shortcodes&lt;/a&gt;.&lt;/p&gt;
@@ -1444,10 +1444,10 @@ $$&lt;/p&gt;</description>
         </item>
         <item>
         <title>Links</title>
-        <link>https://clog95.com/links/</link>
+        <link>https://clog95.github.io/links/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://clog95.com/links/</guid>
+        <guid>https://clog95.github.io/links/</guid>
         <description>&lt;p&gt;To use this feature, add &lt;code&gt;links&lt;/code&gt; section to frontmatter.&lt;/p&gt;
 &lt;p&gt;This page&amp;rsquo;s frontmatter:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;links&lt;/span&gt;:
@@ -1464,10 +1464,10 @@ $$&lt;/p&gt;</description>
         </item>
         <item>
         <title>Search</title>
-        <link>https://clog95.com/search/</link>
+        <link>https://clog95.github.io/search/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://clog95.com/search/</guid>
+        <guid>https://clog95.github.io/search/</guid>
         <description></description>
         </item>
         

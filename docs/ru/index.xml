@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Clog95 - привет!</title>
-        <link>https://clog95.com/ru/</link>
+        <link>https://clog95.github.io/ru/</link>
         <description>Recent content on Clog95 - привет!</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language><atom:link href="https://clog95.com/ru/index.xml" rel="self" type="application/rss+xml" />
+        <language>ru</language><atom:link href="https://clog95.github.io/ru/index.xml" rel="self" type="application/rss+xml" />
     </channel>
 </rss>
