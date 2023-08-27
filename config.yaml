@@ -65,10 +65,10 @@ params:
 
     comments:
         enabled: true
-        provider: gitalk
+        provider: disqus
 
         disqusjs:
-            shortname:
+            shortname: clog95
             apiUrl:
             apiKey:
             admin:
@@ -131,9 +131,9 @@ params:
         gitalk:
             owner:
             admin:
-            repo: https://github.com/clog95/clog95-comments
-            clientID: 296f80a520228186ba2f
-            clientSecret: e3a7ca73f49a53349d5b7367655e5705cb90d10c
+            repo:
+            clientID:
+            clientSecret:
 
         cusdis:
             host:
