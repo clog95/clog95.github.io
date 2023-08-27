@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Clog95</title>
-        <link>https://clog95.github.io/vn/</link>
-        <description>Recent content on Clog95</description>
+        <title>Posts on Clog95</title>
+        <link>https://clog95.github.io/vn/posts/</link>
+        <description>Recent content in Posts on Clog95</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>vn</language>
-        <lastBuildDate>Sat, 26 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://clog95.github.io/vn/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 26 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://clog95.github.io/vn/posts/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Upload files với Nodejs và Express</title>
         <link>https://clog95.github.io/vn/posts/upload-files-voi-nodejs-va-express/</link>
         <pubDate>Sat, 26 Aug 2023 00:00:00 +0000</pubDate>

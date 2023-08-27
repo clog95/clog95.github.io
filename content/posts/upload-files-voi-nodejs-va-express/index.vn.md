@@ -1,13 +1,10 @@
 ---
-title: "Upload Files với Nodejs và Express"
-description: 
-date: 2023-08-25T00:28:06-07:00
-image: 
-math: 
-license: 
-hidden: false
-comments: true
-draft: true
+title: Upload files với Nodejs và Express
+description:
+date: 2023-08-26
+slug: upload-files-voi-nodejs-va-express
+categories:
+    - Node.js
 ---
 
 ## Tổng quan
