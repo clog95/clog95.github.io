@@ -25,29 +25,8 @@
                 href="https://clog95.github.io/"
                 />
   </url><url>
-    <loc>https://clog95.github.io/posts/</loc>
-    <lastmod>2023-08-29T01:43:15-07:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vn"
-                href="https://clog95.github.io/vn/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://clog95.github.io/zh-cn/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://clog95.github.io/posts/"
-                />
-  </url><url>
-    <loc>https://clog95.github.io/posts/upload-files-with-node.js-express.js-and-formidable/</loc>
-    <lastmod>2023-08-29T01:43:15-07:00</lastmod>
-  </url><url>
     <loc>https://clog95.github.io/categories/</loc>
-    <lastmod>2022-09-20T00:00:00+00:00</lastmod>
+    <lastmod>2023-08-29T01:43:15-07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vn"
@@ -69,11 +48,55 @@
                 href="https://clog95.github.io/categories/"
                 />
   </url><url>
+    <loc>https://clog95.github.io/categories/node.js/</loc>
+    <lastmod>2023-08-29T01:43:15-07:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vn"
+                href="https://clog95.github.io/vn/categories/node.js/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://clog95.github.io/categories/node.js/"
+                />
+  </url><url>
+    <loc>https://clog95.github.io/posts/</loc>
+    <lastmod>2023-08-29T01:43:15-07:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vn"
+                href="https://clog95.github.io/vn/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://clog95.github.io/zh-cn/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://clog95.github.io/posts/"
+                />
+  </url><url>
+    <loc>https://clog95.github.io/posts/upload-files-with-node.js-express.js-and-formidable/</loc>
+    <lastmod>2023-08-29T01:43:15-07:00</lastmod>
+  </url><url>
     <loc>https://clog95.github.io/posts/how-to-install-your-own-ghost-blog-on-google-cloud-platform/</loc>
     <lastmod>2022-09-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://clog95.github.io/categories/web-development/</loc>
     <lastmod>2022-09-20T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://clog95.github.io/categories/web-development/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://clog95.github.io/categories/web-development/"
+                />
   </url><url>
     <loc>https://clog95.github.io/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/</loc>
     <lastmod>2022-09-19T00:00:00+00:00</lastmod>
@@ -196,6 +219,16 @@
   </url><url>
     <loc>https://clog95.github.io/categories/test-with-whitespaces/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://clog95.github.io/categories/test-with-whitespaces/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://clog95.github.io/categories/test-with-whitespaces/"
+                />
   </url><url>
     <loc>https://clog95.github.io/tags/text/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
@@ -212,5 +245,29 @@
     <loc>https://clog95.github.io/links/</loc>
   </url><url>
     <loc>https://clog95.github.io/search/</loc>
+  </url><url>
+    <loc>https://clog95.github.io/categories/test-with-whitespaces/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://clog95.github.io/categories/test-with-whitespaces/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://clog95.github.io/categories/test-with-whitespaces/"
+                />
+  </url><url>
+    <loc>https://clog95.github.io/categories/web-development/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://clog95.github.io/categories/web-development/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://clog95.github.io/categories/web-development/"
+                />
   </url>
 </urlset>
