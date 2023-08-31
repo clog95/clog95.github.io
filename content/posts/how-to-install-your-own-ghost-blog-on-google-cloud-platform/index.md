@@ -232,7 +232,7 @@ You just need press **y** then **Enter**, with this you have agreed to Ghost-CLI
 Just need press **y** then **Enter**, Nginx will automatically set up your site to be viewed on the Internet environment.
 
 #### Set up SSL?
-If you want a SSL certificate for your domain and you have already pointed your domain to the static IP address of your server. Now just press **y** then Enter, Ghost-CLI can automatically set up a SSL certificate for you using Let’s Encrypt.
+If you want a SSL certificate for your domain and you have already pointed your domain to the static IP address of your server. Now just press **y** then Enter, Ghost-CLI can automatically set up a SSL certificate for you using Letï¿½s Encrypt.
 
 #### Enter your email
 When you set up an SSL certificate, it will require an email address so that you can be kept informed about your SSL certificate such as expired and renewal.

@@ -37,8 +37,8 @@ params:
         - posts
     featuredImageField: image
     rssFullContent: true
-    favicon:
-
+    favicon: favicon.png
+            
     footer:
         since: 2022
         customText: Sending my dream to the feature!
@@ -49,7 +49,7 @@ params:
 
     sidebar:
         compact: true
-        emoji: 🍥
+        emoji: ☪♾
         subtitle: Small steps are the best way to tackle big goals.
         avatar:
             enabled: true
@@ -174,7 +174,7 @@ params:
         toggle: true
 
         # Available values: auto, light, dark
-        default: auto
+        default: light
 
     imageProcessing:
         cover:

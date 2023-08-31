@@ -144,7 +144,7 @@
 &lt;h4 id=&#34;set-up-nginx&#34;&gt;Set up Nginx&lt;/h4&gt;
 &lt;p&gt;Just need press &lt;strong&gt;y&lt;/strong&gt; then &lt;strong&gt;Enter&lt;/strong&gt;, Nginx will automatically set up your site to be viewed on the Internet environment.&lt;/p&gt;
 &lt;h4 id=&#34;set-up-ssl&#34;&gt;Set up SSL?&lt;/h4&gt;
-&lt;p&gt;If you want a SSL certificate for your domain and you have already pointed your domain to the static IP address of your server. Now just press &lt;strong&gt;y&lt;/strong&gt; then Enter, Ghost-CLI can automatically set up a SSL certificate for you using Let’s Encrypt.&lt;/p&gt;
+&lt;p&gt;If you want a SSL certificate for your domain and you have already pointed your domain to the static IP address of your server. Now just press &lt;strong&gt;y&lt;/strong&gt; then Enter, Ghost-CLI can automatically set up a SSL certificate for you using Letï¿½s Encrypt.&lt;/p&gt;
 &lt;h4 id=&#34;enter-your-email&#34;&gt;Enter your email&lt;/h4&gt;
 &lt;p&gt;When you set up an SSL certificate, it will require an email address so that you can be kept informed about your SSL certificate such as expired and renewal.&lt;/p&gt;
 &lt;h4 id=&#34;set-up-systemd&#34;&gt;Set up systemd?&lt;/h4&gt;

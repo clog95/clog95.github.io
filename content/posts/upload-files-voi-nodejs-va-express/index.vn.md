@@ -14,7 +14,7 @@ categories:
 ---
 
 ## Tổng quan
-Trong bài này mình sẽ hướng dẫn các bạn upload files lên server Nodejs kết hợp Express.js framework, và module **formidable**.
+Trong bài này mình sẽ hướng dẫn các bạn upload files lên server Node.js kết hợp Express.js framework, và module **formidable**.
 
 - **Express.js** là một web framework dành cho Nodejs giúp bạn xây các úng dụng web.
 

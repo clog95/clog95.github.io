@@ -19,6 +19,26 @@ Your own valid GPC account. A registered domain name. Note: Before getting start
 Prerequisites To follow this tutorial, you will need:
 Your own valid GPC account. A registered domain name. Note: Before getting started, you should set up a DNS A record from your domain, pointing to the server&amp;rsquo;s IP address on VM Instance."><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://clog95.github.io/posts/how-to-install-your-own-ghost-blog-on-google-cloud-platform/install-ghost-blog-on-google-cloud-platform.jpg' />
+    <link rel="shortcut icon" href="https://clog95.github.io/images/logo-150x150_hu13ca961c3153d695f5536b0ec20f4b1f_3776_300x0_resize_box_3.png" />
+<style>
+	 
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
+
     </head>
     <body class="
     article-page
@@ -27,7 +47,7 @@ Your own valid GPC account. A registered domain name. Note: Before getting start
         (function() {
             const colorSchemeKey = 'StackColorScheme';
             if(!localStorage.getItem(colorSchemeKey)){
-                localStorage.setItem(colorSchemeKey, "auto");
+                localStorage.setItem(colorSchemeKey, "light");
             }
         })();
     </script><script>
@@ -68,7 +88,7 @@ Your own valid GPC account. A registered domain name. Note: Before getting start
                 
                 </a>
                 
-                    <span class="emoji">🍥</span>
+                    <span class="emoji">☪♾</span>
                 
             </figure>
             
@@ -444,7 +464,7 @@ Your own valid GPC account. A registered domain name. Note: Before getting start
 <h4 id="set-up-nginx">Set up Nginx</h4>
 <p>Just need press <strong>y</strong> then <strong>Enter</strong>, Nginx will automatically set up your site to be viewed on the Internet environment.</p>
 <h4 id="set-up-ssl">Set up SSL?</h4>
-<p>If you want a SSL certificate for your domain and you have already pointed your domain to the static IP address of your server. Now just press <strong>y</strong> then Enter, Ghost-CLI can automatically set up a SSL certificate for you using Let�s Encrypt.</p>
+<p>If you want a SSL certificate for your domain and you have already pointed your domain to the static IP address of your server. Now just press <strong>y</strong> then Enter, Ghost-CLI can automatically set up a SSL certificate for you using Let�s Encrypt.</p>
 <h4 id="enter-your-email">Enter your email</h4>
 <p>When you set up an SSL certificate, it will require an email address so that you can be kept informed about your SSL certificate such as expired and renewal.</p>
 <h4 id="set-up-systemd">Set up systemd?</h4>
