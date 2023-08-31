@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="vn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Tổng quan Trong bài này mình sẽ hướng dẫn các bạn upload files lên server Nodejs kết hợp Express.js framework, và module formidable.
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Tổng quan Trong bài này mình sẽ hướng dẫn các bạn upload files lên server Node.js kết hợp Express.js framework, và module formidable.
 Express.js là một web framework dành cho Nodejs giúp bạn xây các úng dụng web.
 Formidable là một module nodejs được sử dụng để phân tích dữ liệu form, cùng với các file được tải lên.
 Tạo thư mục dự án Giả sử bạn đã cài Node.js, bây giờ sẽ tạo một thư mục tên là uploads cho dự án.'><title>Upload files với Nodejs và Express</title>
@@ -9,7 +9,7 @@ Tạo thư mục dự án Giả sử bạn đã cài Node.js, bây giờ sẽ t�
 <link rel='canonical' href='https://clog95.github.io/vn/posts/upload-files-voi-nodejs-va-express/'>
 
 <link rel="stylesheet" href="/scss/style.min.5a8e892f6fa14515e9065eee1f5d2e05302606ec7f11750b2fb95198f9cdcbfd.css"><meta property='og:title' content='Upload files với Nodejs và Express'>
-<meta property='og:description' content='Tổng quan Trong bài này mình sẽ hướng dẫn các bạn upload files lên server Nodejs kết hợp Express.js framework, và module formidable.
+<meta property='og:description' content='Tổng quan Trong bài này mình sẽ hướng dẫn các bạn upload files lên server Node.js kết hợp Express.js framework, và module formidable.
 Express.js là một web framework dành cho Nodejs giúp bạn xây các úng dụng web.
 Formidable là một module nodejs được sử dụng để phân tích dữ liệu form, cùng với các file được tải lên.
 Tạo thư mục dự án Giả sử bạn đã cài Node.js, bây giờ sẽ tạo một thư mục tên là uploads cho dự án.'>
@@ -17,11 +17,11 @@ Tạo thư mục dự án Giả sử bạn đã cài Node.js, bây giờ sẽ t�
 <meta property='og:site_name' content='Clog95'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:published_time' content='2023-08-27T01:35:13-07:00'/><meta property='article:modified_time' content='2023-08-27T01:35:13-07:00'/>
 <meta name="twitter:title" content="Upload files với Nodejs và Express">
-<meta name="twitter:description" content="Tổng quan Trong bài này mình sẽ hướng dẫn các bạn upload files lên server Nodejs kết hợp Express.js framework, và module formidable.
+<meta name="twitter:description" content="Tổng quan Trong bài này mình sẽ hướng dẫn các bạn upload files lên server Node.js kết hợp Express.js framework, và module formidable.
 Express.js là một web framework dành cho Nodejs giúp bạn xây các úng dụng web.
 Formidable là một module nodejs được sử dụng để phân tích dữ liệu form, cùng với các file được tải lên.
 Tạo thư mục dự án Giả sử bạn đã cài Node.js, bây giờ sẽ tạo một thư mục tên là uploads cho dự án.">
-    <link rel="shortcut icon" href="https://clog95.github.io/images/logo-150x150_hu13ca961c3153d695f5536b0ec20f4b1f_3776_300x0_resize_box_3.png" />
+    <link rel="shortcut icon" href="favicon.png" />
 <style>
 	 
     :root {
@@ -221,7 +221,7 @@ Tạo thư mục dự án Giả sử bạn đã cài Node.js, bây giờ sẽ t�
     
     
     <h2 id="tổng-quan">Tổng quan</h2>
-<p>Trong bài này mình sẽ hướng dẫn các bạn upload files lên server Nodejs kết hợp Express.js framework, và module <strong>formidable</strong>.</p>
+<p>Trong bài này mình sẽ hướng dẫn các bạn upload files lên server Node.js kết hợp Express.js framework, và module <strong>formidable</strong>.</p>
 <ul>
 <li>
 <p><strong>Express.js</strong> là một web framework dành cho Nodejs giúp bạn xây các úng dụng web.</p>

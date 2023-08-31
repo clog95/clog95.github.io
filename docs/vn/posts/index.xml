@@ -13,7 +13,7 @@
         
         <guid>https://clog95.github.io/vn/posts/upload-files-voi-nodejs-va-express/</guid>
         <description>&lt;h2 id=&#34;tổng-quan&#34;&gt;Tổng quan&lt;/h2&gt;
-&lt;p&gt;Trong bài này mình sẽ hướng dẫn các bạn upload files lên server Nodejs kết hợp Express.js framework, và module &lt;strong&gt;formidable&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Trong bài này mình sẽ hướng dẫn các bạn upload files lên server Node.js kết hợp Express.js framework, và module &lt;strong&gt;formidable&lt;/strong&gt;.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Express.js&lt;/strong&gt; là một web framework dành cho Nodejs giúp bạn xây các úng dụng web.&lt;/p&gt;

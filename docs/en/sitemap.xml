@@ -71,16 +71,6 @@
   </url><url>
     <loc>https://clog95.github.io/categories/web-development/</loc>
     <lastmod>2022-09-20T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://clog95.github.io/categories/web-development/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://clog95.github.io/categories/web-development/"
-                />
   </url><url>
     <loc>https://clog95.github.io/posts/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-2004/</loc>
     <lastmod>2022-09-19T00:00:00+00:00</lastmod>
@@ -219,17 +209,5 @@
     <loc>https://clog95.github.io/links/</loc>
   </url><url>
     <loc>https://clog95.github.io/search/</loc>
-  </url><url>
-    <loc>https://clog95.github.io/categories/web-development/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://clog95.github.io/categories/web-development/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://clog95.github.io/categories/web-development/"
-                />
   </url>
 </urlset>
