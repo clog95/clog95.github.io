@@ -2,6 +2,7 @@
 title: "Upload Files With Node.js + Express.js and Formidable"
 description: 
 date: 2023-08-29T01:43:15-07:00
+slug: upload-files-with-nodejs-expressjs-and-formidable
 image: upload-files-with-node.js-express.js-and-formidable.jpg
 math: 
 license: 
