@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Overview This article I&amp;rsquo;ll walk you through how to upload files using Node.js and combine the Formidable module.
+The Formidable module is a Node.js module for parsing form data, especially file uploads. Initialize App Assuming you’ve already installed Node.js, create a directory to hold your application. For instance, create my-app directory:
+mkdir my-app Go into my-app directory and run the npm init command to initialize a Node.js application.
+cd my-app npm init This command prompts you for a number of things, such as the name and version of your application.'><title>Nodejs Upload Files - Basic</title>
+
+<link rel='canonical' href='https://clog95.github.io/posts/nodejs-upload-files-basic/'>
+
+<link rel="stylesheet" href="/scss/style.min.5a8e892f6fa14515e9065eee1f5d2e05302606ec7f11750b2fb95198f9cdcbfd.css"><meta property='og:title' content='Nodejs Upload Files - Basic'>
+<meta property='og:description' content='Overview This article I&amp;rsquo;ll walk you through how to upload files using Node.js and combine the Formidable module.
+The Formidable module is a Node.js module for parsing form data, especially file uploads. Initialize App Assuming you’ve already installed Node.js, create a directory to hold your application. For instance, create my-app directory:
+mkdir my-app Go into my-app directory and run the npm init command to initialize a Node.js application.
+cd my-app npm init This command prompts you for a number of things, such as the name and version of your application.'>
+<meta property='og:url' content='https://clog95.github.io/posts/nodejs-upload-files-basic/'>
+<meta property='og:site_name' content='Clog95 - Hi Guys!'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:published_time' content='2023-08-31T00:19:22-07:00'/><meta property='article:modified_time' content='2023-08-31T00:19:22-07:00'/><meta property='og:image' content='https://clog95.github.io/posts/nodejs-upload-files-basic/nodejs-upload-files-basic.jpg' />
+<meta name="twitter:title" content="Nodejs Upload Files - Basic">
+<meta name="twitter:description" content="Overview This article I&amp;rsquo;ll walk you through how to upload files using Node.js and combine the Formidable module.
+The Formidable module is a Node.js module for parsing form data, especially file uploads. Initialize App Assuming you’ve already installed Node.js, create a directory to hold your application. For instance, create my-app directory:
+mkdir my-app Go into my-app directory and run the npm init command to initialize a Node.js application.
+cd my-app npm init This command prompts you for a number of things, such as the name and version of your application."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://clog95.github.io/posts/nodejs-upload-files-basic/nodejs-upload-files-basic.jpg' />
+    <link rel="shortcut icon" href="favicon.png" />
+<style>
+	 
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "light");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky compact">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/images/logo-150x150_hu13ca961c3153d695f5536b0ec20f4b1f_3776_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">☪♾</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Clog95 - Hi Guys!</a></h1>
+            <h2 class="site-description">Small steps are the best way to tackle big goals.</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://clog95.github.io/" selected>English</option>
+                        
+                            <option value="https://clog95.github.io/vn/" >Việt Nam</option>
+                        
+                            <option value="https://clog95.github.io/ru/" >россия</option>
+                        
+                            <option value="https://clog95.github.io/zh-cn/" >中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/posts/nodejs-upload-files-basic/">
+                <img src="/posts/nodejs-upload-files-basic/nodejs-upload-files-basic_hu45b6f00fc7702293d11d22bb8f6be0c9_30834_800x0_resize_q75_box.jpg"
+                        srcset="/posts/nodejs-upload-files-basic/nodejs-upload-files-basic_hu45b6f00fc7702293d11d22bb8f6be0c9_30834_800x0_resize_q75_box.jpg 800w, /posts/nodejs-upload-files-basic/nodejs-upload-files-basic_hu45b6f00fc7702293d11d22bb8f6be0c9_30834_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post Nodejs Upload Files - Basic" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/node.js/" style="background-color: #2a9d8f; color: #fff;">
+                Node.js
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/posts/nodejs-upload-files-basic/">Nodejs Upload Files - Basic</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 31, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="overview">Overview</h2>
+<p>This article I&rsquo;ll walk you through how to upload files using <strong>Node.js</strong> and combine the <strong>Formidable</strong> module.</p>
+<ul>
+<li>The <strong>Formidable</strong> module is a Node.js module for parsing form data, especially file uploads.</li>
+</ul>
+<h2 id="initialize-app">Initialize App</h2>
+<p>Assuming you’ve already installed Node.js, create a directory to hold your application. For instance, create <strong>my-app</strong> directory:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir my-app
+</span></span></code></pre></div><p>Go into <strong>my-app</strong> directory and run the <code>npm init</code> command to initialize a <strong>Node.js</strong> application.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd my-app
+</span></span><span style="display:flex;"><span>npm init
+</span></span></code></pre></div><ul>
+<li>This command prompts you for a number of things, such as the name and version of your application. To simplify, you just hit <strong>ENTER</strong> to accept the defaults of them. The <code>npm init</code> will generate a <strong>package.json</strong> file, this file contains the information of <strong>Node.js</strong> application.</li>
+</ul>
+<h2 id="install-the-formidable">Install the Formidable</h2>
+<p>Install the <strong>Formidable</strong> module:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>npm install formidable
+</span></span></code></pre></div><p>After installing, you have an extra <strong>node_modules</strong> folder and a <strong>package-lock.json</strong> file. The app directory should look like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>my-app
+</span></span><span style="display:flex;"><span>│   node_modules
+</span></span><span style="display:flex;"><span>│   package.json
+</span></span><span style="display:flex;"><span>|   package-lock.json
+</span></span></code></pre></div><h2 id="create-appjs-and-formhtml-files">Create app.js and form.html files</h2>
+<p>Insides the <strong>my-app</strong> directory, create the <strong>app.js</strong> and <strong>form.html</strong> files. Should look like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>my-app
+</span></span><span style="display:flex;"><span>│   node_modules
+</span></span><span style="display:flex;"><span>|   app.js
+</span></span><span style="display:flex;"><span>|   form.html
+</span></span><span style="display:flex;"><span>│   package.json
+</span></span><span style="display:flex;"><span>|   package-lock.json
+</span></span></code></pre></div><p>The <strong>app.js</strong> file will contain <strong>Node.js</strong> codes for handling server side. And the <strong>form.html</strong> will display a form to upload files.</p>
+<h2 id="importing-modules">Importing Modules</h2>
+<p>We need to import some modules: <strong>HTTP</strong>, <strong>File System</strong>, and <strong>Formidable</strong>. The <strong>Formidable</strong> that we have installed above, and other modules is build-in in <strong>Node.js</strong>. Copy and paste the codes below into <strong>app.js</strong> file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">http</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;http&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;fs&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">formidable</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;formidable&#39;</span>);
+</span></span></code></pre></div><h2 id="build-upload-files-page">Build upload files page</h2>
+<p>Now, build an upload page to display a form that users can select file upload. Open the <strong>form.html</strong> file then copy and paste the HTML codes below into it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width: 200px; margin: auto; padding-top: 24px;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">action</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/fileupload&#34;</span> <span style="color:#a6e22e">method</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;post&#34;</span> <span style="color:#a6e22e">enctype</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;multipart/form-data&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;file&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fileToUpload&#34;</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">form</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><ul>
+<li>The <code>input</code> element has <code>type=&quot;file&quot;</code> attribute to upload files, and <code>name=&quot;fileToUpload&quot;</code> to get information about files uploaded.</li>
+<li>The <code>form</code> element has <code>enctype=&quot;multipart/form-data&quot;</code> attribute specifying  how the form-data should be encoded when submitting it to the server, this attribute is required. The <code>action=&quot;/fileupload&quot;</code> and <code>method=&quot;post&quot;</code> will redirect you to the <code>/fileupload</code> route with the <code>post</code> method when submitting data.</li>
+</ul>
+<h2 id="create-a-server">Create a server</h2>
+<p>Use the <strong>HTTP</strong> module to create a server that listens on port 3000 for connections.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">createServer</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Code block here
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}).<span style="color:#a6e22e">listen</span>(<span style="color:#ae81ff">3000</span>);
+</span></span></code></pre></div><h2 id="display-the-upload-files-page">Display the upload files page.</h2>
+<p>If the user doesn&rsquo;t submit the form, we&rsquo;ll display a form to users select the file upload. And if the user submitted the form, then they will be redirected to the <code>/fileupload</code> route with the <strong>post</strong> method.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">createServer</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">url</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;/fileupload&#39;</span>) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Handling files here when the user submitted the form
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Display a form to users select the file upload
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">readFile</span>(<span style="color:#e6db74">&#39;form.html&#39;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">data</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">writeHead</span>(<span style="color:#ae81ff">200</span>, {<span style="color:#e6db74">&#39;Content-Type&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;text/html&#39;</span>});
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">data</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">end</span>();
+</span></span><span style="display:flex;"><span>    }); 
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}).<span style="color:#a6e22e">listen</span>(<span style="color:#ae81ff">3000</span>);
+</span></span></code></pre></div><h2 id="parse-the-uploaded-file">Parse the Uploaded File</h2>
+<p>When a user clicks submit the form, now the server will detect and we can use the <strong>Formidable</strong> module to parse the uploaded file once it reaches the server.</p>
+<p>Initialize the form instance of the <strong>Formidable</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">form</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">formidable</span>.<span style="color:#a6e22e">IncomingForm</span>();
+</span></span></code></pre></div><p>Now, we can use the <code>form</code> object to parse data from the request when a user submits the form.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">req</span>, (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">fields</span>, <span style="color:#a6e22e">files</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Callback function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>})
+</span></span></code></pre></div><ul>
+<li>
+<p>The <code>form.parse</code> takes a request and runs a callback function. This callback function takes 3 arguments <strong>err</strong>, <strong>fields</strong>, <strong>files</strong></p>
+</li>
+<li>
+<p>The <code>files</code> argument is an object returned when a user submits the form. This object includes an array and the name of this array is the <code>fileToUpload</code> that is the same with the <code>name=&quot;fileToUpload&quot;</code> that we have set for the <code>input</code> element in the <code>form.html</code> file.</p>
+</li>
+</ul>
+<p>Print the <code>files</code> argument in the console to see the <code>fileToUpload</code> array.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">files</span>);
+</span></span></code></pre></div><p>The object returned in the console is similar:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">fileToUpload</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">PersistentFile</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">_events</span><span style="color:#f92672">:</span> [Object<span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span> <span style="color:#a6e22e">prototype</span>],
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">_eventsCount</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">_maxListeners</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">undefined</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">lastModifiedDate</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2023</span><span style="color:#f92672">-</span><span style="color:#ae81ff">09</span><span style="color:#f92672">-</span><span style="color:#ae81ff">01</span><span style="color:#a6e22e">T07</span><span style="color:#f92672">:</span><span style="color:#ae81ff">35</span><span style="color:#f92672">:</span><span style="color:#ae81ff">30.959</span><span style="color:#a6e22e">Z</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">filepath</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;C:\\Users\\Administrator\\AppData\\Local\\Temp\\86856d601f72dd96aadf71800&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">newFilename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;86856d601f72dd96aadf71800&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">originalFilename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;chou4.mp3&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">mimetype</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;audio/mpeg&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">hashAlgorithm</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">size</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">15926</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">_writeStream</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">WriteStream</span>],
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">hash</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>      [<span style="color:#a6e22e">Symbol</span>(<span style="color:#a6e22e">kCapture</span>)]<span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>We can see different attributes of the <code>fileToUpload</code> array above. But pay attention:</p>
+<ul>
+<li><code>filepath</code> is a temporary folder that the file is uploaded to.</li>
+<li><code>newFilename</code> is a random name of the file’s uploaded in the temporary folder.</li>
+<li><code>originalFilename</code> is the original name of the file’s uploaded.</li>
+</ul>
+<p>We need to save the file in the new folder with the original name of this file. Now use the <strong>File System</strong> module to move the file from the temporary folder to the folder of your choice, and rename the file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">files</span>.<span style="color:#a6e22e">fileToUpload</span>.<span style="color:#a6e22e">forEach</span>((<span style="color:#a6e22e">file</span>) =&gt; {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Get the temporary folder that the file is stored in
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">oldpath</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">file</span>.<span style="color:#a6e22e">filepath</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// The new folder that the file is stored in with its original name
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">newpath</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;C:/Users/Administrator/Desktop/NodeJS/ghost_theme/&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">file</span>.<span style="color:#a6e22e">originalFilename</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Use the File System module to rename and save in the new location
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">rename</span>(<span style="color:#a6e22e">oldpath</span>, <span style="color:#a6e22e">newpath</span>, <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>) <span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">err</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">write</span>(<span style="color:#e6db74">&#39;File uploaded and moved!&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">end</span>();
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>Show a message if the user submits the form without selecting a file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">files</span>.<span style="color:#a6e22e">fileToUpload</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">write</span>(<span style="color:#e6db74">&#34;No file selected!&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">end</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="the-full-code">The full code</h2>
+<p>The full code of the <strong>app.js</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">http</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;http&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;fs&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">formidable</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;formidable&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">createServer</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">url</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;/fileupload&#39;</span>) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Initialize the form instance of the Formidable
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">form</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">formidable</span>.<span style="color:#a6e22e">IncomingForm</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Parse data from the request when a user submits the form
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">req</span>, (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">fields</span>, <span style="color:#a6e22e">files</span>) =&gt; {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Print the files object in the console to see infos
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">files</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Show a message if the user submits the form without selecting a file
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">files</span>.<span style="color:#a6e22e">fileToUpload</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">write</span>(<span style="color:#e6db74">&#34;No file selected!&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">end</span>();
+</span></span><span style="display:flex;"><span>      }      
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">files</span>.<span style="color:#a6e22e">fileToUpload</span>.<span style="color:#a6e22e">forEach</span>((<span style="color:#a6e22e">file</span>) =&gt; {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Get the temporary folder that the file is stored in
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">oldpath</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">file</span>.<span style="color:#a6e22e">filepath</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// The new folder that the file is stored in with its original name
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">newpath</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;C:/Users/Administrator/Desktop/NodeJS/ghost_theme/&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">file</span>.<span style="color:#a6e22e">originalFilename</span>;
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Use the File System module to rename and save in the new location
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">rename</span>(<span style="color:#a6e22e">oldpath</span>, <span style="color:#a6e22e">newpath</span>, <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>) <span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">err</span>;
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">write</span>(<span style="color:#e6db74">&#39;File uploaded and moved!&#39;</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">end</span>();
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      });      
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Display a form to users select the file upload
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">readFile</span>(<span style="color:#e6db74">&#39;form.html&#39;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">data</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">writeHead</span>(<span style="color:#ae81ff">200</span>, {<span style="color:#e6db74">&#39;Content-Type&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;text/html&#39;</span>});
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">data</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">end</span>();
+</span></span><span style="display:flex;"><span>    }); 
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}).<span style="color:#a6e22e">listen</span>(<span style="color:#ae81ff">3000</span>);
+</span></span></code></pre></div>
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+    <script>
+        
+
+        
+
+        (function() { 
+        var d = document, s = d.createElement('script');
+        s.src = 'https://clog95.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Clog95 - Hi Guys!
+    </section>
+    
+    <section class="powerby">
+        
+            Sending my dream to the feature! <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#initialize-app">Initialize App</a></li>
+    <li><a href="#install-the-formidable">Install the Formidable</a></li>
+    <li><a href="#create-appjs-and-formhtml-files">Create app.js and form.html files</a></li>
+    <li><a href="#importing-modules">Importing Modules</a></li>
+    <li><a href="#build-upload-files-page">Build upload files page</a></li>
+    <li><a href="#create-a-server">Create a server</a></li>
+    <li><a href="#display-the-upload-files-page">Display the upload files page.</a></li>
+    <li><a href="#parse-the-uploaded-file">Parse the Uploaded File</a></li>
+    <li><a href="#the-full-code">The full code</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
